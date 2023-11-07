@@ -3,7 +3,16 @@
 <suite name="Regression Suite">
     <test name="Login">
         <classes>
-            <class name="com.solvd.login.LoginPageTest"/>
+            <class name="com.solvd.login.LoginPageTest">
+                <methods>
+                    <include name="loginWithValidCredentialsTest"/>
+                    <include name="displayErrorMessageWhenEmptyUsernameTest"/>
+                    <include name="displayErrorMessageWhenEmptyPasswordTest"/>
+                    <include name="displayErrorMessageWhenInvalidUsernameTest"/>
+                    <include name="displayErrorMessageWhenInvalidPasswordTest"/>
+                    <include name="loginCorrectlyAfterFailedAttemptTest"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

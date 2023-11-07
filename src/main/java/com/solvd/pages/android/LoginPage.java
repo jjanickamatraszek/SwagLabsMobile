@@ -1,8 +1,6 @@
 package com.solvd.pages.android;
 
 import com.solvd.pages.common.LoginPageBase;
-import com.solvd.pages.common.MainPageBase;
-import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -42,14 +40,6 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
     @Override
     public void clickLoginBtn() {
         loginBtn.click();
-    }
-
-    @Override
-    public MainPageBase login() {
-        typeName(R.TESTDATA.get("username"));
-        typePassword(R.TESTDATA.get("password"));
-        clickLoginBtn();
-        return initPage(getDriver(), MainPageBase.class);
     }
 
     @Override

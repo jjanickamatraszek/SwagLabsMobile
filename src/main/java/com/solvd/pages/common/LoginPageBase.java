@@ -15,8 +15,6 @@ public abstract class LoginPageBase extends AbstractPage {
 
     public abstract void clickLoginBtn();
 
-    public abstract MainPageBase login();
-
     public abstract boolean isErrorMessageDisplayed(String expectedErrorMessageText);
 
     public abstract boolean isErrorMessageDisplayed();
