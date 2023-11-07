@@ -13,6 +13,12 @@
                     <include name="loginCorrectlyAfterFailedAttemptTest"/>
                 </methods>
             </class>
+            <class name="com.solvd.mainPage.AddRemoveItemsFromCartTest">
+                <methods>
+                    <include name="addSingleItemToCartTest"/>
+                    <include name="addFiveItemsToCartTest"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
