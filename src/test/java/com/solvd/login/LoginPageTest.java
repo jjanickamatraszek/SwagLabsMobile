@@ -1,22 +1,19 @@
 package com.solvd.login;
 
-import com.qaprosoft.carina.core.foundation.IAbstractTest;
+import com.solvd.base.SauceDemoBaseTest;
 import com.solvd.dataProviders.DataProviders;
 import com.solvd.pages.common.LoginPageBase;
 import com.solvd.pages.common.MainPageBase;
-import com.solvd.utils.AuthUtils;
 import com.zebrunner.carina.utils.R;
-import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static com.solvd.utils.LoginErrorMessage.*;
 
-public class LoginPageTest implements IAbstractTest, IMobileUtils {
+public class LoginPageTest extends SauceDemoBaseTest {
 
     @Test
     public void loginWithValidCredentialsTest() {
-        AuthUtils authUtils = new AuthUtils();
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         Assert.assertTrue(mainPage.isPageOpened(), "Main page is not opened after login");
     }
@@ -25,8 +22,8 @@ public class LoginPageTest implements IAbstractTest, IMobileUtils {
     public void displayErrorMessageWhenEmptyUsernameTest(String password) {
         String expectedErrorMessage = USERNAME_REQUIRED.get();
 
-        AuthUtils authUtils = new AuthUtils();
-        LoginPageBase loginPage = authUtils.login("", password);
+        authUtils.login("", password);
+        LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(expectedErrorMessage),
                 "Error message is not displayed with expected text. Expected: '%s'. Actual: '%s'"
                         .formatted(expectedErrorMessage, loginPage.getErrorMessageText()));
@@ -36,8 +33,8 @@ public class LoginPageTest implements IAbstractTest, IMobileUtils {
     public void displayErrorMessageWhenEmptyPasswordTest() {
         String expectedErrorMessage = PASSWORD_REQUIRED.get();
 
-        AuthUtils authUtils = new AuthUtils();
-        LoginPageBase loginPage = authUtils.login(R.TESTDATA.get("username"), "");
+        authUtils.login(R.TESTDATA.get("username"), "");
+        LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(expectedErrorMessage),
                 "Error message is not displayed with expected text. Expected: '%s'. Actual: '%s'"
                         .formatted(expectedErrorMessage, loginPage.getErrorMessageText()));
@@ -47,8 +44,8 @@ public class LoginPageTest implements IAbstractTest, IMobileUtils {
     public void displayErrorMessageWhenInvalidUsernameTest() {
         String expectedErrorMessage = CREDS_DONT_MATCH.get();
 
-        AuthUtils authUtils = new AuthUtils();
-        LoginPageBase loginPage = authUtils.login("invalid", R.TESTDATA.get("password"));
+        authUtils.login("invalid", R.TESTDATA.get("password"));
+        LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(expectedErrorMessage),
                 "Error message is not displayed with expected text. Expected: '%s'. Actual: '%s'"
                         .formatted(expectedErrorMessage, loginPage.getErrorMessageText()));
@@ -58,8 +55,8 @@ public class LoginPageTest implements IAbstractTest, IMobileUtils {
     public void displayErrorMessageWhenInvalidPasswordTest() {
         String expectedErrorMessage = CREDS_DONT_MATCH.get();
 
-        AuthUtils authUtils = new AuthUtils();
-        LoginPageBase loginPage = authUtils.login(R.TESTDATA.get("username"), "invalid");
+        authUtils.login(R.TESTDATA.get("username"), "invalid");
+        LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(expectedErrorMessage),
                 "Error message is not displayed with expected text. Expected: '%s'. Actual: '%s'"
                         .formatted(expectedErrorMessage, loginPage.getErrorMessageText()));
@@ -67,8 +64,8 @@ public class LoginPageTest implements IAbstractTest, IMobileUtils {
 
     @Test
     public void loginCorrectlyAfterFailedAttemptTest() {
-        AuthUtils authUtils = new AuthUtils();
-        LoginPageBase loginPage = authUtils.login(R.TESTDATA.get("username"), "invalid");
+        authUtils.login(R.TESTDATA.get("username"), "invalid");
+        LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(), "Error message is not displayed after unsuccessful login");
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
