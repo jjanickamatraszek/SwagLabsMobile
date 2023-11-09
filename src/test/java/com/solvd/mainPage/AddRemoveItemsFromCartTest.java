@@ -18,9 +18,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
         int expectedAmountOfItems = 1;
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
-        mainPage.swipeUpToItem(expectedItemTitle);
-
-        Assert.assertTrue(mainPage.isItemVisible(expectedItemTitle),
+        Assert.assertTrue(mainPage.swipeUpToItem(expectedItemTitle),
                 "Item '%s' isn't present on the screen".formatted(expectedItemTitle));
         mainPage.addItemToCart(expectedItemTitle);
 
@@ -50,7 +48,6 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         for (String expectedItemTitle : itemTitles) {
-            mainPage.swipeUpToItem(expectedItemTitle);
             mainPage.addItemToCart(expectedItemTitle);
         }
 
@@ -66,14 +63,48 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
         soft.assertAll();
     }
 
-    @Test
-    public void removeSingleItemFromCartTest() {
+    @Test(dataProvider = "item titles to add single item to cart", dataProviderClass = DataProviders.class)
+    public void removeSingleItemFromCartTest(String expectedItemTitle) {
+        MainPageBase mainPage = authUtils.loginWithDefaultUser();
+        mainPage.addItemToCart(L10N.getText("item1.title"));
+        mainPage.addItemToCart(expectedItemTitle);
+        mainPage.removeItemFromCart(expectedItemTitle);
 
+        SoftAssert soft = new SoftAssert();
+        soft.assertTrue(mainPage.isAddToCartBtnForItemVisible(expectedItemTitle),
+                "Btn 'Add to cart' didn't appear after removing item from cart");
+        soft.assertEquals(mainPage.getTopAppBar().getItemsAmountInCart(), 1,
+                "Amount of items on cart icon didn't decrease after removing item from cart");
+
+        CartPageBase cartPage = mainPage.getTopAppBar().goToCart();
+        soft.assertFalse(cartPage.swipeUpToItem(expectedItemTitle, 4),
+                "Item '%s' is still present in cart".formatted(expectedItemTitle));
+        soft.assertAll();
     }
 
     @Test
     public void removeAllItemsFromCartTest() {
+        List<String> itemTitles = List.of(L10N.getText("item1.title"),
+                L10N.getText("item2.title"), L10N.getText("item3.title"),
+                L10N.getText("item4.title"), L10N.getText("item5.title"));
 
+        MainPageBase mainPage = authUtils.loginWithDefaultUser();
+        for (String expectedItemTitle : itemTitles) {
+            mainPage.addItemToCart(expectedItemTitle);
+        }
+        mainPage.swipeDownToItem(L10N.getText("item1.title"));
+        for (String expectedItemTitle : itemTitles) {
+            mainPage.removeItemFromCart(expectedItemTitle);
+        }
+
+        SoftAssert soft = new SoftAssert();
+        soft.assertFalse(mainPage.getTopAppBar().isItemsAmountVisible(),
+                "Amount of items on cart icon is still visible after removing all items from cart");
+
+        CartPageBase cartPage = mainPage.getTopAppBar().goToCart();
+        soft.assertTrue(cartPage.isCartEmpty(),
+                "Cart isn't empty after removing all added items");
+        soft.assertAll();
     }
 
     @Test

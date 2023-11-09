@@ -26,6 +26,9 @@ public class MainPage extends MainPageBase {
     @FindBy(xpath = "//android.widget.TextView[@content-desc='test-Item title' and @text='%s']/following-sibling::android.view.ViewGroup[@content-desc='test-REMOVE']")
     private ExtendedWebElement removeItemFromCartBtnFormatted;
 
+    @FindBy(xpath = "//android.widget.TextView[@content-desc='test-Item title' and @text='%s']/following-sibling::android.view.ViewGroup[@content-desc='test-REMOVE' or @content-desc='test-ADD TO CART']")
+    private ExtendedWebElement addRemoveBtnContainerFormatted;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -44,7 +47,7 @@ public class MainPage extends MainPageBase {
     }
 
     public boolean swipeUpToItem(String itemTitle) {
-        return swipe(addItemToCartBtnFormatted.format(itemTitle), itemsContainer, Direction.UP, 10);
+        return swipe(addRemoveBtnContainerFormatted.format(itemTitle), itemsContainer, Direction.UP, 10);
     }
 
     public boolean isItemVisible(String itemTitle) {
@@ -52,7 +55,17 @@ public class MainPage extends MainPageBase {
     }
 
     public void addItemToCart(String itemTitle) {
+        swipeUpToItem(itemTitle);
         addItemToCartBtnFormatted.format(itemTitle).click();
+    }
+
+    public void removeItemFromCart(String itemTitle) {
+        swipeUpToItem(itemTitle);
+        removeItemFromCartBtnFormatted.format(itemTitle).click();
+    }
+
+    public boolean isAddToCartBtnForItemVisible(String itemTitle) {
+        return addItemToCartBtnFormatted.format(itemTitle).isVisible();
     }
 
     public boolean isRemoveBtnForItemVisible(String itemTitle) {

@@ -13,6 +13,6 @@ public class DataProviders {
 
     @DataProvider(name = "item titles to add single item to cart")
     public Object[][] itemsForSingleItemToCart() {
-        return new Object[][]{{L10N.getText("item1.title")}, {L10N.getText("item4.title")}};
+        return new Object[][]{{L10N.getText("item2.title")}, {L10N.getText("item4.title")}};
     }
 }

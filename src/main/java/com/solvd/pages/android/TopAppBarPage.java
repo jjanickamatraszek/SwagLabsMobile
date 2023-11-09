@@ -24,6 +24,11 @@ public class TopAppBarPage extends TopAppBarPageBase {
     }
 
     @Override
+    public boolean isItemsAmountVisible() {
+        return amountOfItemInCart.isVisible(1);
+    }
+
+    @Override
     public int getItemsAmountInCart() {
         return Integer.parseInt(amountOfItemInCart.getText());
     }

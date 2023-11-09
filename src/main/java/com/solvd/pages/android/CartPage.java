@@ -17,6 +17,9 @@ public class CartPage extends CartPageBase {
     @FindBy(xpath = "//android.widget.ScrollView[@content-desc='test-Cart Content']")
     private ExtendedWebElement itemsContainer;
 
+    @AndroidFindBy(accessibility = "test-Item")
+    private ExtendedWebElement itemContainer;
+
     @FindBy(xpath = "//android.widget.TextView[@text='%s']")
     private ExtendedWebElement itemTitleFormatted;
 
@@ -31,11 +34,19 @@ public class CartPage extends CartPageBase {
         return initPage(getDriver(), TopAppBarPageBase.class);
     }
 
+    public boolean isCartEmpty() {
+        return !itemContainer.isVisible(1);
+    }
+
     public boolean swipeDownToItem(String itemTitle) {
         return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, Direction.DOWN, 20);
     }
 
     public boolean swipeUpToItem(String itemTitle) {
         return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, Direction.UP, 20);
+    }
+
+    public boolean swipeUpToItem(String itemTitle, int count) {
+        return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, Direction.UP, count);
     }
 }

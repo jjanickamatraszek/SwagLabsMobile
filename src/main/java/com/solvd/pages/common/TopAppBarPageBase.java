@@ -10,6 +10,8 @@ public abstract class TopAppBarPageBase extends AbstractPage implements IMobileU
         super(driver);
     }
 
+    public abstract boolean isItemsAmountVisible();
+
     public abstract int getItemsAmountInCart();
 
     public abstract CartPageBase goToCart();

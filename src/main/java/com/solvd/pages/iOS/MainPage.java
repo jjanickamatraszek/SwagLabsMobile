@@ -48,6 +48,16 @@ public class MainPage extends MainPageBase {
     }
 
     @Override
+    public void removeItemFromCart(String itemTitle) {
+
+    }
+
+    @Override
+    public boolean isAddToCartBtnForItemVisible(String itemTitle) {
+        return false;
+    }
+
+    @Override
     public boolean isRemoveBtnForItemVisible(String itemTitle) {
         return false;
     }
