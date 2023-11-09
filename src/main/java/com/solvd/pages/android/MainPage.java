@@ -38,36 +38,52 @@ public class MainPage extends MainPageBase {
         return itemsContainer.isElementPresent();
     }
 
+    @Override
     public TopAppBarPageBase getTopAppBar() {
         return initPage(getDriver(), TopAppBarPageBase.class);
     }
 
-    public boolean swipeDownToItem(String itemTitle) {
-        return swipe(itemImageFormatted.format(itemTitle), itemsContainer, Direction.DOWN, 10);
+    @Override
+    public boolean swipeToItem(String itemTitle, Direction direction) {
+        switch (direction) {
+            case UP -> {
+                return swipe(addRemoveBtnContainerFormatted.format(itemTitle), itemsContainer, Direction.UP, 10);
+            }
+            case DOWN -> {
+                return swipe(itemImageFormatted.format(itemTitle), itemsContainer, Direction.DOWN, 10);
+            }
+            default -> {
+                return false;
+            }
+        }
     }
 
-    public boolean swipeUpToItem(String itemTitle) {
-        return swipe(addRemoveBtnContainerFormatted.format(itemTitle), itemsContainer, Direction.UP, 10);
-    }
-
-    public boolean isItemVisible(String itemTitle) {
+    @Override
+    public boolean isItemDisplayed(String itemTitle) {
+        swipeToItem(itemTitle, Direction.UP);
         return itemTitleFormatted.format(itemTitle).isVisible(1);
     }
 
-    public void addItemToCart(String itemTitle) {
-        swipeUpToItem(itemTitle);
+    @Override
+    public MainPageBase addItemToCart(String itemTitle) {
+        swipeToItem(itemTitle, Direction.UP);
         addItemToCartBtnFormatted.format(itemTitle).click();
+        return this;
     }
 
-    public void removeItemFromCart(String itemTitle) {
-        swipeUpToItem(itemTitle);
+    @Override
+    public MainPageBase removeItemFromCart(String itemTitle) {
+        swipeToItem(itemTitle, Direction.UP);
         removeItemFromCartBtnFormatted.format(itemTitle).click();
+        return this;
     }
 
+    @Override
     public boolean isAddToCartBtnForItemVisible(String itemTitle) {
         return addItemToCartBtnFormatted.format(itemTitle).isVisible();
     }
 
+    @Override
     public boolean isRemoveBtnForItemVisible(String itemTitle) {
         return removeItemFromCartBtnFormatted.format(itemTitle).isVisible();
     }

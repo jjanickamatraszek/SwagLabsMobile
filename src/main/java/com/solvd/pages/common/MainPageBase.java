@@ -12,15 +12,13 @@ public abstract class MainPageBase extends AbstractPage implements IMobileUtils 
 
     public abstract TopAppBarPageBase getTopAppBar();
 
-    public abstract boolean swipeDownToItem(String itemTitle);
+    public abstract boolean swipeToItem(String itemTitle, Direction direction);
 
-    public abstract boolean swipeUpToItem(String itemTitle);
+    public abstract boolean isItemDisplayed(String itemTitle);
 
-    public abstract boolean isItemVisible(String itemTitle);
+    public abstract MainPageBase addItemToCart(String itemTitle);
 
-    public abstract void addItemToCart(String itemTitle);
-
-    public abstract void removeItemFromCart(String itemTitle);
+    public abstract MainPageBase removeItemFromCart(String itemTitle);
 
     public abstract boolean isAddToCartBtnForItemVisible(String itemTitle);
 

@@ -30,23 +30,28 @@ public class CartPage extends CartPageBase {
         super(driver);
     }
 
+    @Override
     public TopAppBarPageBase getTopAppBar() {
         return initPage(getDriver(), TopAppBarPageBase.class);
     }
 
+    @Override
     public boolean isCartEmpty() {
         return !itemContainer.isVisible(1);
     }
 
-    public boolean swipeDownToItem(String itemTitle) {
-        return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, Direction.DOWN, 20);
+    @Override
+    public boolean swipeToItem(String itemTitle, Direction direction) {
+        return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, direction, 20);
     }
 
-    public boolean swipeUpToItem(String itemTitle) {
-        return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, Direction.UP, 20);
+    @Override
+    public boolean swipeToItem(String itemTitle, Direction direction, int count) {
+        return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, direction, count);
     }
 
-    public boolean swipeUpToItem(String itemTitle, int count) {
-        return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, Direction.UP, count);
+    @Override
+    public boolean isItemDisplayed(String itemTitle) {
+        return swipeToItem(itemTitle, Direction.UP);
     }
 }

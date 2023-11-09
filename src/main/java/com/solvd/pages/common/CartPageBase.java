@@ -14,9 +14,9 @@ public abstract class CartPageBase extends AbstractPage implements IMobileUtils 
 
     public abstract boolean isCartEmpty();
 
-    public abstract boolean swipeDownToItem(String itemTitle);
+    public abstract boolean swipeToItem(String itemTitle, Direction direction);
 
-    public abstract boolean swipeUpToItem(String itemTitle);
+    public abstract boolean swipeToItem(String itemTitle, Direction direction, int count);
 
-    public abstract boolean swipeUpToItem(String itemTitle, int count);
+    public abstract boolean isItemDisplayed(String itemTitle);
 }

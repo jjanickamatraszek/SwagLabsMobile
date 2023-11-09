@@ -18,7 +18,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
         int expectedAmountOfItems = 1;
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
-        Assert.assertTrue(mainPage.swipeUpToItem(expectedItemTitle),
+        Assert.assertTrue(mainPage.isItemDisplayed(expectedItemTitle),
                 "Item '%s' isn't present on the screen".formatted(expectedItemTitle));
         mainPage.addItemToCart(expectedItemTitle);
 
@@ -29,7 +29,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
                 "Amount of items displayed on cart icon is different than expected");
 
         CartPageBase cartPage = mainPage.getTopAppBar().goToCart();
-        soft.assertTrue(cartPage.swipeUpToItem(expectedItemTitle),
+        soft.assertTrue(cartPage.isItemDisplayed(expectedItemTitle),
                 "Item '%s' isn't present in cart".formatted(expectedItemTitle));
         soft.assertAll();
     }
@@ -57,7 +57,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
 
         CartPageBase cartPage = mainPage.getTopAppBar().goToCart();
         for (String expectedItemTitle : itemTitles) {
-            soft.assertTrue(cartPage.swipeUpToItem(expectedItemTitle),
+            soft.assertTrue(cartPage.isItemDisplayed(expectedItemTitle),
                     "Item '%s' isn't present in the cart".formatted(expectedItemTitle));
         }
         soft.assertAll();
@@ -77,7 +77,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
                 "Amount of items on cart icon didn't decrease after removing item from cart");
 
         CartPageBase cartPage = mainPage.getTopAppBar().goToCart();
-        soft.assertFalse(cartPage.swipeUpToItem(expectedItemTitle, 4),
+        soft.assertFalse(cartPage.swipeToItem(expectedItemTitle, Direction.UP, 4),
                 "Item '%s' is still present in cart".formatted(expectedItemTitle));
         soft.assertAll();
     }
@@ -92,7 +92,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
         for (String expectedItemTitle : itemTitles) {
             mainPage.addItemToCart(expectedItemTitle);
         }
-        mainPage.swipeDownToItem(L10N.getText("item1.title"));
+        mainPage.swipeToItem(L10N.getText("item1.title"), Direction.DOWN);
         for (String expectedItemTitle : itemTitles) {
             mainPage.removeItemFromCart(expectedItemTitle);
         }

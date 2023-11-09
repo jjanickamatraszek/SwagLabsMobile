@@ -40,17 +40,17 @@ public class CartPage extends CartPageBase {
     }
 
     @Override
-    public boolean swipeDownToItem(String itemTitle) {
-        return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, Direction.DOWN, 20);
+    public boolean swipeToItem(String itemTitle, Direction direction) {
+        return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, direction, 20);
     }
 
     @Override
-    public boolean swipeUpToItem(String itemTitle) {
-        return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, Direction.UP, 20);
+    public boolean swipeToItem(String itemTitle, Direction direction, int count) {
+        return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, direction, count);
     }
 
     @Override
-    public boolean swipeUpToItem(String itemTitle, int count) {
-        return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, Direction.UP, count);
+    public boolean isItemDisplayed(String itemTitle) {
+        return swipeToItem(itemTitle, Direction.UP);
     }
 }

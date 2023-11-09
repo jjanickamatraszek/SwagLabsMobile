@@ -44,30 +44,37 @@ public class MainPage extends MainPageBase {
     }
 
     @Override
-    public boolean swipeDownToItem(String itemTitle) {
-        return swipe(itemImageFormatted.format(itemTitle), itemsContainer, Direction.DOWN, 10);
+    public boolean swipeToItem(String itemTitle, Direction direction) {
+        switch (direction) {
+            case UP -> {
+                return swipe(addRemoveBtnContainerFormatted.format(itemTitle), itemsContainer, Direction.UP, 10);
+            }
+            case DOWN -> {
+                return swipe(itemImageFormatted.format(itemTitle), itemsContainer, Direction.DOWN, 10);
+            }
+            default -> {
+                return false;
+            }
+        }
     }
 
     @Override
-    public boolean swipeUpToItem(String itemTitle) {
-        return swipe(addRemoveBtnContainerFormatted.format(itemTitle), itemsContainer, Direction.UP, 10);
+    public boolean isItemDisplayed(String itemTitle) {
+        return swipeToItem(itemTitle, Direction.UP);
     }
 
     @Override
-    public boolean isItemVisible(String itemTitle) {
-        return itemTitleFormatted.format(itemTitle).isVisible(1);
-    }
-
-    @Override
-    public void addItemToCart(String itemTitle) {
-        swipeUpToItem(itemTitle);
+    public MainPageBase addItemToCart(String itemTitle) {
+        swipeToItem(itemTitle, Direction.UP);
         addItemToCartBtnFormatted.format(itemTitle).click();
+        return this;
     }
 
     @Override
-    public void removeItemFromCart(String itemTitle) {
-        swipeUpToItem(itemTitle);
+    public MainPageBase removeItemFromCart(String itemTitle) {
+        swipeToItem(itemTitle, Direction.UP);
         removeItemFromCartBtnFormatted.format(itemTitle).click();
+        return this;
     }
 
     @Override
