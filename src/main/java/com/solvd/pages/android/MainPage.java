@@ -26,8 +26,14 @@ public class MainPage extends MainPageBase {
     @FindBy(xpath = "//android.widget.TextView[@content-desc='test-Item title' and @text='%s']/following-sibling::android.view.ViewGroup[@content-desc='test-REMOVE']")
     private ExtendedWebElement removeItemFromCartBtnFormatted;
 
+    @FindBy(xpath = "//android.widget.TextView[@content-desc='test-Item title' and @text='%s']/following-sibling::android.view.ViewGroup[@content-desc='test-Drag Handle']")
+    private ExtendedWebElement itemDragHandleFormatted;
+
     @FindBy(xpath = "//android.widget.TextView[@content-desc='test-Item title' and @text='%s']/following-sibling::android.view.ViewGroup[@content-desc='test-REMOVE' or @content-desc='test-ADD TO CART']")
     private ExtendedWebElement addRemoveBtnContainerFormatted;
+
+    @FindBy(xpath = "//android.view.ViewGroup[contains(@content-desc,'drop')]")
+    private ExtendedWebElement dropArea;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -68,6 +74,13 @@ public class MainPage extends MainPageBase {
     public void addItemToCart(String itemTitle) {
         swipeToItem(itemTitle, Direction.UP);
         addItemToCartBtnFormatted.format(itemTitle).click();
+    }
+
+    @Override
+    public MainPageBase addItemToCartByDragAndDrop(String itemTitle) {
+        swipeToItem(itemTitle, Direction.UP);
+        dragAndDrop(itemDragHandleFormatted.format(itemTitle), dropArea);
+        return this;
     }
 
     @Override
