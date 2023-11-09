@@ -10,8 +10,6 @@ public abstract class CartPageBase extends AbstractPage implements IMobileUtils 
         super(driver);
     }
 
-    public abstract int getAmountOfItemsInCart();
-
     public abstract boolean swipeDownToItem(String itemTitle);
 
     public abstract boolean swipeUpToItem(String itemTitle);

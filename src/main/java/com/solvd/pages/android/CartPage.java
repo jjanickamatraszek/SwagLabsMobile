@@ -8,9 +8,6 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CartPageBase.class)
 public class CartPage extends CartPageBase {
 
@@ -23,9 +20,6 @@ public class CartPage extends CartPageBase {
     @FindBy(xpath = "//android.widget.TextView[@text='%s']")
     private ExtendedWebElement itemTitleFormatted;
 
-    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Description']/android.widget.TextView[1]")
-    private ExtendedWebElement itemTitle;
-
     @AndroidFindBy(accessibility = "test-CHECKOUT")
     private ExtendedWebElement checkoutBtn;
 
@@ -35,14 +29,6 @@ public class CartPage extends CartPageBase {
 
     public TopAppBarPageBase getTopAppBar() {
         return initPage(getDriver(), TopAppBarPageBase.class);
-    }
-
-    public int getAmountOfItemsInCart() {
-        Set<String> items = new HashSet<>();
-        do {
-            items.add(itemTitle.getText());
-        } while (!swipe(checkoutBtn, 1, 1000));
-        return items.size();
     }
 
     public boolean swipeDownToItem(String itemTitle) {

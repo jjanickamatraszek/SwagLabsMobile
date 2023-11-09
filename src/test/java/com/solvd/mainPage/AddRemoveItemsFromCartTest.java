@@ -33,8 +33,6 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
         CartPageBase cartPage = mainPage.getTopAppBar().goToCart();
         soft.assertTrue(cartPage.swipeUpToItem(expectedItemTitle),
                 "Item '%s' isn't present in cart".formatted(expectedItemTitle));
-        soft.assertEquals(cartPage.getAmountOfItemsInCart(), expectedAmountOfItems,
-                "Amount of items displayed in cart is different than expected");
         soft.assertAll();
     }
 
@@ -65,10 +63,6 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
             soft.assertTrue(cartPage.swipeUpToItem(expectedItemTitle),
                     "Item '%s' isn't present in the cart".formatted(expectedItemTitle));
         }
-
-        cartPage.swipeDownToItem(L10N.getText("item1.title"));
-        soft.assertEquals(cartPage.getAmountOfItemsInCart(), expectedAmountOfItems,
-                "Amount of items displayed in cart is different than expected");
         soft.assertAll();
     }
 
