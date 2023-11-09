@@ -18,6 +18,8 @@ public abstract class MainPageBase extends AbstractPage implements IMobileUtils 
 
     public abstract MainPageBase addItemToCart(String itemTitle);
 
+    public abstract MainPageBase addItemToCartByDragAndDrop(String itemTitle);
+
     public abstract MainPageBase removeItemFromCart(String itemTitle);
 
     public abstract boolean isAddToCartBtnForItemVisible(String itemTitle);

@@ -26,8 +26,14 @@ public class MainPage extends MainPageBase {
     @FindBy(xpath = "//XCUIElementTypeOther[@name='test-Item' and .//XCUIElementTypeStaticText[@name='test-Item title' and @label='%s']]//XCUIElementTypeOther[@name='test-REMOVE']")
     private ExtendedWebElement removeItemFromCartBtnFormatted;
 
+    @FindBy(xpath = "//XCUIElementTypeOther[@name='test-Item' and .//XCUIElementTypeStaticText[@name='test-Item title' and @label='%s']]//XCUIElementTypeOther[@name='test-Drag Handle']")
+    private ExtendedWebElement itemDragHandleFormatted;
+
     @FindBy(xpath = "//XCUIElementTypeOther[@name='test-Item' and .//XCUIElementTypeStaticText[@name='test-Item title' and @label='%s']]//XCUIElementTypeOther[@name='test-REMOVE' or @name='test-ADD TO CART']")
     private ExtendedWebElement addRemoveBtnContainerFormatted;
+
+    @FindBy(xpath = "//XCUIElementTypeOther[@name='test-Cart drop zone']")
+    private ExtendedWebElement dropArea;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -67,6 +73,13 @@ public class MainPage extends MainPageBase {
     public MainPageBase addItemToCart(String itemTitle) {
         swipeToItem(itemTitle, Direction.UP);
         addItemToCartBtnFormatted.format(itemTitle).click();
+        return this;
+    }
+
+    @Override
+    public MainPageBase addItemToCartByDragAndDrop(String itemTitle) {
+        swipeToItem(itemTitle, Direction.UP);
+        dragAndDrop(itemDragHandleFormatted.format(itemTitle), dropArea);
         return this;
     }
 

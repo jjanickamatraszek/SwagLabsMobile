@@ -19,6 +19,7 @@
                     <include name="addFiveItemsToCartTest"/>
                     <include name="removeSingleItemFromCartTest"/>
                     <include name="removeAllItemsFromCartTest"/>
+                    <include name="addSingleItemToCartByDragAndDropTest"/>
                 </methods>
             </class>
         </classes>

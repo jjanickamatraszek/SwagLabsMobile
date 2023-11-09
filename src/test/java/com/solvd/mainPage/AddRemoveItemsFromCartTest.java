@@ -35,11 +35,6 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
     }
 
     @Test
-    public void addSingleItemToCartWithImageLocatorTest() {
-
-    }
-
-    @Test
     public void addFiveItemsToCartTest() {
         int expectedAmountOfItems = 5;
         List<String> itemTitles = List.of(L10N.getText("item1.title"),
@@ -107,8 +102,24 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
         soft.assertAll();
     }
 
-    @Test
-    public void addSingleItemToCartByDragAndDropTest() {
+    @Test(dataProvider = "item titles to add single item to cart", dataProviderClass = DataProviders.class)
+    public void addSingleItemToCartByDragAndDropTest(String expectedItemTitle) {
+        int expectedAmountOfItems = 1;
 
+        MainPageBase mainPage = authUtils.loginWithDefaultUser();
+        Assert.assertTrue(mainPage.isItemDisplayed(expectedItemTitle),
+                "Item '%s' isn't present on the screen".formatted(expectedItemTitle));
+        mainPage.addItemToCartByDragAndDrop(expectedItemTitle);
+
+        SoftAssert soft = new SoftAssert();
+        soft.assertTrue(mainPage.isRemoveBtnForItemVisible(expectedItemTitle),
+                "Remove btn for item '%s' isn't visible after adding item to cart".formatted(expectedItemTitle));
+        soft.assertEquals(mainPage.getTopAppBar().getItemsAmountInCart(), expectedAmountOfItems,
+                "Amount of items displayed on cart icon is different than expected");
+
+        CartPageBase cartPage = mainPage.getTopAppBar().goToCart();
+        soft.assertTrue(cartPage.isItemDisplayed(expectedItemTitle),
+                "Item '%s' isn't present in cart".formatted(expectedItemTitle));
+        soft.assertAll();
     }
 }
