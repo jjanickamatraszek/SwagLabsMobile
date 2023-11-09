@@ -10,6 +10,8 @@ public abstract class CartPageBase extends AbstractPage implements IMobileUtils 
         super(driver);
     }
 
+    public abstract TopAppBarPageBase getTopAppBar();
+
     public abstract boolean isCartEmpty();
 
     public abstract boolean swipeDownToItem(String itemTitle);
