@@ -10,6 +10,8 @@ public abstract class MainPageBase extends AbstractPage implements IMobileUtils 
         super(driver);
     }
 
+    public abstract MainPageBase clickToggleLayoutBtn();
+
     public abstract boolean swipeToItemTitle(String itemTitle, Direction direction);
 
     public abstract boolean swipeToAddRemoveFromCartBtn(String itemTitle, Direction direction);

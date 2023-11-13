@@ -10,6 +10,9 @@ import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = MainPageBase.class)
 public class MainPage extends MainPageBase {
 
+    @iOSXCUITFindBy(accessibility = "test-Toggle")
+    private ExtendedWebElement toggleLayoutBtn;
+
     @iOSXCUITFindBy(accessibility = "test-PRODUCTS")
     private ExtendedWebElement itemsContainer;
 
@@ -39,13 +42,19 @@ public class MainPage extends MainPageBase {
     }
 
     @Override
+    public MainPageBase clickToggleLayoutBtn() {
+        toggleLayoutBtn.click();
+        return this;
+    }
+
+    @Override
     public boolean isPageOpened() {
         return itemsContainer.isElementPresent();
     }
 
     @Override
     public boolean swipeToItemTitle(String itemTitle, Direction direction) {
-        return swipe(itemImageFormatted.format(itemTitle), itemsContainer, direction, 10);
+        return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, direction, 10);
     }
 
     @Override
@@ -61,7 +70,13 @@ public class MainPage extends MainPageBase {
     @Override
     public MainPageBase clickAddToCartBtn(String itemTitle) {
         swipeToAddRemoveFromCartBtn(itemTitle, Direction.UP);
-        addItemToCartBtnFormatted.format(itemTitle).click();
+        int width = addItemToCartBtnFormatted.format(itemTitle).getSize().getWidth();
+        int height = addItemToCartBtnFormatted.format(itemTitle).getSize().getHeight();
+        int x = addItemToCartBtnFormatted.format(itemTitle).getLocation().getX();
+        int y = addItemToCartBtnFormatted.format(itemTitle).getLocation().getY();
+        int movedX = (int) Math.round(x + width * 0.8);
+        int movedY = (int) Math.round(y + height * 0.2);
+        tap(movedX, movedY);
         return this;
     }
 

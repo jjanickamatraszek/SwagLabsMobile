@@ -10,6 +10,9 @@ import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = MainPageBase.class)
 public class MainPage extends MainPageBase {
 
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Toggle']")
+    private ExtendedWebElement toggleLayoutBtn;
+
     @AndroidFindBy(accessibility = "test-PRODUCTS")
     private ExtendedWebElement itemsContainer;
 
@@ -39,13 +42,19 @@ public class MainPage extends MainPageBase {
     }
 
     @Override
+    public MainPageBase clickToggleLayoutBtn() {
+        toggleLayoutBtn.click();
+        return this;
+    }
+
+    @Override
     public boolean isPageOpened() {
         return itemsContainer.isElementPresent();
     }
 
     @Override
     public boolean swipeToItemTitle(String itemTitle, Direction direction) {
-        return swipe(itemImageFormatted.format(itemTitle), itemsContainer, direction, 10);
+        return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, direction, 10);
     }
 
     @Override
