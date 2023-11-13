@@ -1,7 +1,6 @@
 package com.solvd.pages.android;
 
 import com.solvd.pages.common.MainPageBase;
-import com.solvd.pages.common.TopAppBarPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -45,48 +44,38 @@ public class MainPage extends MainPageBase {
     }
 
     @Override
-    public TopAppBarPageBase getTopAppBar() {
-        return initPage(getDriver(), TopAppBarPageBase.class);
+    public boolean swipeToItemTitle(String itemTitle, Direction direction) {
+        return swipe(itemImageFormatted.format(itemTitle), itemsContainer, direction, 10);
     }
 
     @Override
-    public boolean swipeToItem(String itemTitle, Direction direction) {
-        switch (direction) {
-            case UP -> {
-                return swipe(addRemoveBtnContainerFormatted.format(itemTitle), itemsContainer, Direction.UP, 10);
-            }
-            case DOWN -> {
-                return swipe(itemImageFormatted.format(itemTitle), itemsContainer, Direction.DOWN, 10);
-            }
-            default -> {
-                return false;
-            }
-        }
+    public boolean swipeToAddRemoveFromCartBtn(String itemTitle, Direction direction) {
+        return swipe(addRemoveBtnContainerFormatted.format(itemTitle), itemsContainer, direction, 10);
     }
 
     @Override
-    public boolean isItemDisplayed(String itemTitle) {
-        swipeToItem(itemTitle, Direction.UP);
+    public boolean isItemTitleDisplayed(String itemTitle) {
+        swipeToItemTitle(itemTitle, Direction.UP);
         return itemTitleFormatted.format(itemTitle).isVisible(1);
     }
 
     @Override
-    public MainPageBase addItemToCart(String itemTitle) {
-        swipeToItem(itemTitle, Direction.UP);
+    public MainPageBase clickAddToCartBtn(String itemTitle) {
+        swipeToAddRemoveFromCartBtn(itemTitle, Direction.UP);
         addItemToCartBtnFormatted.format(itemTitle).click();
         return this;
     }
 
     @Override
     public MainPageBase addItemToCartByDragAndDrop(String itemTitle) {
-        swipeToItem(itemTitle, Direction.UP);
+        swipeToAddRemoveFromCartBtn(itemTitle, Direction.UP);
         dragAndDrop(itemDragHandleFormatted.format(itemTitle), dropArea);
         return this;
     }
 
     @Override
-    public MainPageBase removeItemFromCart(String itemTitle) {
-        swipeToItem(itemTitle, Direction.UP);
+    public MainPageBase clickRemoveItemFromCartBtn(String itemTitle) {
+        swipeToAddRemoveFromCartBtn(itemTitle, Direction.UP);
         removeItemFromCartBtnFormatted.format(itemTitle).click();
         return this;
     }

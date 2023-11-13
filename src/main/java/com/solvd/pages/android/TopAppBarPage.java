@@ -34,7 +34,7 @@ public class TopAppBarPage extends TopAppBarPageBase {
     }
 
     @Override
-    public CartPageBase goToCart() {
+    public CartPageBase clickCartBtn() {
         cartIcon.click();
         return initPage(getDriver(), CartPageBase.class);
     }

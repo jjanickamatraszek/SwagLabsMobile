@@ -10,17 +10,17 @@ public abstract class MainPageBase extends AbstractPage implements IMobileUtils 
         super(driver);
     }
 
-    public abstract TopAppBarPageBase getTopAppBar();
+    public abstract boolean swipeToItemTitle(String itemTitle, Direction direction);
 
-    public abstract boolean swipeToItem(String itemTitle, Direction direction);
+    public abstract boolean swipeToAddRemoveFromCartBtn(String itemTitle, Direction direction);
 
-    public abstract boolean isItemDisplayed(String itemTitle);
+    public abstract boolean isItemTitleDisplayed(String itemTitle);
 
-    public abstract MainPageBase addItemToCart(String itemTitle);
+    public abstract MainPageBase clickAddToCartBtn(String itemTitle);
 
     public abstract MainPageBase addItemToCartByDragAndDrop(String itemTitle);
 
-    public abstract MainPageBase removeItemFromCart(String itemTitle);
+    public abstract MainPageBase clickRemoveItemFromCartBtn(String itemTitle);
 
     public abstract boolean isAddToCartBtnForItemVisible(String itemTitle);
 

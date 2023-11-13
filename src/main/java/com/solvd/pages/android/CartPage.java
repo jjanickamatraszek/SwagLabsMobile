@@ -1,7 +1,6 @@
 package com.solvd.pages.android;
 
 import com.solvd.pages.common.CartPageBase;
-import com.solvd.pages.common.TopAppBarPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -31,27 +30,22 @@ public class CartPage extends CartPageBase {
     }
 
     @Override
-    public TopAppBarPageBase getTopAppBar() {
-        return initPage(getDriver(), TopAppBarPageBase.class);
-    }
-
-    @Override
     public boolean isCartEmpty() {
         return !itemContainer.isVisible(1);
     }
 
     @Override
-    public boolean swipeToItem(String itemTitle, Direction direction) {
+    public boolean swipeToItemTitle(String itemTitle, Direction direction) {
         return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, direction, 20);
     }
 
     @Override
-    public boolean swipeToItem(String itemTitle, Direction direction, int count) {
+    public boolean swipeToItemTitle(String itemTitle, Direction direction, int count) {
         return swipe(itemTitleFormatted.format(itemTitle), itemsContainer, direction, count);
     }
 
     @Override
-    public boolean isItemDisplayed(String itemTitle) {
-        return swipeToItem(itemTitle, Direction.UP);
+    public boolean isItemTitleDisplayed(String itemTitle) {
+        return swipeToItemTitle(itemTitle, Direction.UP);
     }
 }
