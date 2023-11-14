@@ -27,6 +27,19 @@
                     <include name="addSingleItemToCartByDragAndDropInListLayoutTest"/>
                 </methods>
             </class>
+            <class name="com.solvd.mainPage.SortItemsTest">
+                <methods>
+                    <include name="sortItemsByNameAscTest"/>
+                    <include name="sortItemsByNameDescTest"/>
+                    <include name="sortItemsByPriceAscTest"/>
+                    <include name="sortItemsByPriceDescTest"/>
+                    <include name="cancelSortTest"/>
+                    <include name="sortItemsByNameAscInListLayoutTest"/>
+                    <include name="sortItemsByNameDescInListLayoutTest"/>
+                    <include name="sortItemsByPriceAscInListLayoutTest"/>
+                    <include name="sortItemsByPriceDescInListLayoutTest"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
