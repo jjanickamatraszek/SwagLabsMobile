@@ -1,6 +1,5 @@
 package com.solvd.pages.iOS;
 
-import com.solvd.pages.common.MainPageBase;
 import com.solvd.pages.common.SortModalPageBase;
 import com.solvd.utils.SortOption;
 import com.zebrunner.carina.utils.factory.DeviceType;
@@ -22,15 +21,12 @@ public class SortModalPage extends SortModalPageBase {
     }
 
     @Override
-    public MainPageBase clickSortBy(SortOption sortBy) {
+    public void clickSortBy(SortOption sortBy) {
         sortOption.format(sortBy.get()).click();
-        System.out.println(sortOption.format(sortBy.get()).getNameWithLocator());
-        return initPage(getDriver(), MainPageBase.class);
     }
 
     @Override
-    public MainPageBase clickCancel() {
+    public void clickCancel() {
         cancelBtn.click();
-        return initPage(getDriver(), MainPageBase.class);
     }
 }

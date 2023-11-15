@@ -16,9 +16,8 @@ public class SortItemsTest extends SauceDemoBaseTest {
         SortOption sortOption = SortOption.NAME_ASC;
 
         R.CONFIG.put("capabilities.allowInvisibleElements", "true");
-        MainPageBase mainPage = authUtils
-                .loginWithDefaultUser()
-                .clickSortBtn()
+        MainPageBase mainPage = authUtils.loginWithDefaultUser();
+        mainPage.clickSortBtn()
                 .clickSortBy(sortOption);
         Assert.assertTrue(mainPage.areItemsSorted(sortOption),
                 "Items aren't sorted by name ASC. Actual titles: %s\n Expected titles: %s"
@@ -30,9 +29,8 @@ public class SortItemsTest extends SauceDemoBaseTest {
         SortOption sortOption = SortOption.NAME_DESC;
 
         R.CONFIG.put("capabilities.allowInvisibleElements", "true");
-        MainPageBase mainPage = authUtils
-                .loginWithDefaultUser()
-                .clickSortBtn()
+        MainPageBase mainPage = authUtils.loginWithDefaultUser();
+        mainPage.clickSortBtn()
                 .clickSortBy(sortOption);
         Assert.assertTrue(mainPage.areItemsSorted(sortOption),
                 "Items aren't sorted by name DESC. Actual titles: %s\n Expected titles: %s"
@@ -44,9 +42,8 @@ public class SortItemsTest extends SauceDemoBaseTest {
         SortOption sortOption = SortOption.PRICE_ASC;
 
         R.CONFIG.put("capabilities.allowInvisibleElements", "true");
-        MainPageBase mainPage = authUtils
-                .loginWithDefaultUser()
-                .clickSortBtn()
+        MainPageBase mainPage = authUtils.loginWithDefaultUser();
+        mainPage.clickSortBtn()
                 .clickSortBy(sortOption);
         Assert.assertTrue(mainPage.areItemsSorted(sortOption),
                 "Items aren't sorted by price ASC. Actual titles: %s\n Expected titles: %s"
@@ -58,9 +55,8 @@ public class SortItemsTest extends SauceDemoBaseTest {
         SortOption sortOption = SortOption.PRICE_DESC;
 
         R.CONFIG.put("capabilities.allowInvisibleElements", "true");
-        MainPageBase mainPage = authUtils
-                .loginWithDefaultUser()
-                .clickSortBtn()
+        MainPageBase mainPage = authUtils.loginWithDefaultUser();
+        mainPage.clickSortBtn()
                 .clickSortBy(sortOption);
         Assert.assertTrue(mainPage.areItemsSorted(sortOption),
                 "Items aren't sorted by price DESC. Actual titles: %s\n Expected titles: %s"
@@ -69,9 +65,8 @@ public class SortItemsTest extends SauceDemoBaseTest {
 
     @Test
     public void cancelSortTest() {
-        MainPageBase mainPage = authUtils
-                .loginWithDefaultUser()
-                .clickSortBtn()
+        MainPageBase mainPage = authUtils.loginWithDefaultUser();
+        mainPage.clickSortBtn()
                 .clickCancel();
         Assert.assertFalse(mainPage.isSortModalVisible(), "Sort modal is still visible after clicking 'Cancel'");
     }
@@ -81,9 +76,8 @@ public class SortItemsTest extends SauceDemoBaseTest {
         SortOption sortOption = SortOption.NAME_ASC;
 
         R.CONFIG.put("capabilities.allowInvisibleElements", "true");
-        MainPageBase mainPage = authUtils
-                .loginWithDefaultUser()
-                .clickToggleLayoutBtn()
+        MainPageBase mainPage = authUtils.loginWithDefaultUser();
+        mainPage.clickToggleLayoutBtn()
                 .clickSortBtn()
                 .clickSortBy(sortOption);
         Assert.assertTrue(mainPage.areItemsSorted(sortOption),
@@ -96,9 +90,8 @@ public class SortItemsTest extends SauceDemoBaseTest {
         SortOption sortOption = SortOption.NAME_DESC;
 
         R.CONFIG.put("capabilities.allowInvisibleElements", "true");
-        MainPageBase mainPage = authUtils
-                .loginWithDefaultUser()
-                .clickToggleLayoutBtn()
+        MainPageBase mainPage = authUtils.loginWithDefaultUser();
+        mainPage.clickToggleLayoutBtn()
                 .clickSortBtn()
                 .clickSortBy(sortOption);
         Assert.assertTrue(mainPage.areItemsSorted(sortOption),
@@ -111,9 +104,8 @@ public class SortItemsTest extends SauceDemoBaseTest {
         SortOption sortOption = SortOption.PRICE_ASC;
 
         R.CONFIG.put("capabilities.allowInvisibleElements", "true");
-        MainPageBase mainPage = authUtils
-                .loginWithDefaultUser()
-                .clickToggleLayoutBtn()
+        MainPageBase mainPage = authUtils.loginWithDefaultUser();
+        mainPage.clickToggleLayoutBtn()
                 .clickSortBtn()
                 .clickSortBy(sortOption);
         Assert.assertTrue(mainPage.areItemsSorted(sortOption),
@@ -126,9 +118,8 @@ public class SortItemsTest extends SauceDemoBaseTest {
         SortOption sortOption = SortOption.PRICE_DESC;
 
         R.CONFIG.put("capabilities.allowInvisibleElements", "true");
-        MainPageBase mainPage = authUtils
-                .loginWithDefaultUser()
-                .clickToggleLayoutBtn()
+        MainPageBase mainPage = authUtils.loginWithDefaultUser();
+        mainPage.clickToggleLayoutBtn()
                 .clickSortBtn()
                 .clickSortBy(sortOption);
         Assert.assertTrue(mainPage.areItemsSorted(sortOption),

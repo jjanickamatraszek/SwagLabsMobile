@@ -10,7 +10,7 @@ public abstract class SortModalPageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract MainPageBase clickSortBy(SortOption sortOption);
+    public abstract void clickSortBy(SortOption sortOption);
 
-    public abstract MainPageBase clickCancel();
+    public abstract void clickCancel();
 }
