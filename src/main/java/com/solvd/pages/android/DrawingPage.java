@@ -4,6 +4,8 @@ import com.solvd.pages.common.DrawingPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
+import io.appium.java_client.HasSettings;
+import io.appium.java_client.Setting;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Interactive;
 import org.openqa.selenium.interactions.Pause;
@@ -37,6 +39,8 @@ public class DrawingPage extends DrawingPageBase {
 
     @Override
     public boolean isDrawingPadVisibleByImage() {
+        HasSettings driver = (HasSettings) getDriver();
+        driver.setSetting(Setting.IMAGE_MATCH_THRESHOLD, 0.3);
         return signaturePadByImage.isPresent(3);
     }
 
@@ -73,6 +77,8 @@ public class DrawingPage extends DrawingPageBase {
 
     @Override
     public boolean isLineDrawn() {
+        HasSettings driver = (HasSettings) getDriver();
+        driver.setSetting(Setting.IMAGE_MATCH_THRESHOLD, 0.3);
         return expectedLineImage.isPresent(3);
     }
 }
