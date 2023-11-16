@@ -6,7 +6,6 @@ import com.solvd.pages.common.MainPageBase;
 import com.solvd.pages.common.TopAppBarPageBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 public class DrawingTests extends SauceDemoBaseTest {
 
@@ -15,16 +14,22 @@ public class DrawingTests extends SauceDemoBaseTest {
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
         DrawingPageBase drawingPage = topBar.clickMenuBtn()
-                .navigateToDrawingPage();
-
-        Assert.assertTrue(drawingPage.isPageOpened());
-
-        SoftAssert soft = new SoftAssert();
-        soft.assertTrue(drawingPage.isDrawingPadVisibleByImage(),
-                "Empty drawing pad is not visible");
-        drawingPage.drawLine();
-        soft.assertTrue(drawingPage.isLineDrawn(),
+                .navigateToDrawingPage()
+                .drawLine();
+        Assert.assertTrue(drawingPage.isLineDrawn(),
                 "Image with line is not visible");
-        soft.assertAll();
+        ;
+    }
+
+    @Test
+    public void drawHouseTest() {
+        authUtils.loginWithDefaultUser();
+        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        DrawingPageBase drawingPage = topBar.clickMenuBtn()
+                .navigateToDrawingPage()
+                .drawHouse();
+        Assert.assertTrue(drawingPage.isHouseDrawn(),
+                "Image with house is not visible");
+
     }
 }

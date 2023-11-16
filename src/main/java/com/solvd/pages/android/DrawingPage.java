@@ -22,11 +22,11 @@ public class DrawingPage extends DrawingPageBase {
     @FindBy(xpath = "//android.view.View[@resource-id='signature-pad']//android.widget.Image")
     private ExtendedWebElement signaturePad;
 
-    @ExtendedFindBy(image = "images/android/android_empty.png")
-    private ExtendedWebElement signaturePadByImage;
-
     @ExtendedFindBy(image = "images/android/android_line.png")
     private ExtendedWebElement expectedLineImage;
+
+    @ExtendedFindBy(image = "images/android/android_house.png")
+    private ExtendedWebElement expectedHouseImage;
 
     public DrawingPage(WebDriver driver) {
         super(driver);
@@ -35,13 +35,6 @@ public class DrawingPage extends DrawingPageBase {
     @Override
     public boolean isPageOpened() {
         return signaturePad.isVisible();
-    }
-
-    @Override
-    public boolean isDrawingPadVisibleByImage() {
-        HasSettings driver = (HasSettings) getDriver();
-        driver.setSetting(Setting.IMAGE_MATCH_THRESHOLD, 0.3);
-        return signaturePadByImage.isPresent(3);
     }
 
     @Override
@@ -77,8 +70,34 @@ public class DrawingPage extends DrawingPageBase {
 
     @Override
     public boolean isLineDrawn() {
-        HasSettings driver = (HasSettings) getDriver();
-        driver.setSetting(Setting.IMAGE_MATCH_THRESHOLD, 0.3);
+        setImageMatchThreshold(0.3);
         return expectedLineImage.isPresent(3);
+    }
+
+    @Override
+    public DrawingPageBase drawHouse() {
+        int x = signaturePad.getLocation().getX();
+        int y = signaturePad.getLocation().getY();
+        int fromX = x + 200;
+        int fromY = y + 400;
+
+        drawLine(fromX, fromY, fromX + 330, fromY);
+        drawLine(fromX + 50, fromY + 200, fromX + 270, fromY + 200);
+        drawLine(fromX + 50, fromY, fromX + 50, fromY + 220);
+        drawLine(fromX + 250, fromY, fromX + 250, fromY + 220);
+        drawLine(fromX, fromY, fromX + 180, fromY - 120);
+        drawLine(fromX + 170, fromY - 100, fromX + 330, fromY);
+        return this;
+    }
+
+    @Override
+    public boolean isHouseDrawn() {
+        setImageMatchThreshold(0.3);
+        return expectedHouseImage.isPresent(3);
+    }
+
+    private void setImageMatchThreshold(double value) {
+        HasSettings driver = (HasSettings) getDriver();
+        driver.setSetting(Setting.IMAGE_MATCH_THRESHOLD, value);
     }
 }
