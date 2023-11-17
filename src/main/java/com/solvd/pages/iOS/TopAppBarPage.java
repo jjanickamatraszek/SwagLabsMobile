@@ -1,6 +1,7 @@
 package com.solvd.pages.iOS;
 
 import com.solvd.pages.common.CartPageBase;
+import com.solvd.pages.common.MenuPageBase;
 import com.solvd.pages.common.TopAppBarPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -38,5 +39,11 @@ public class TopAppBarPage extends TopAppBarPageBase {
     public CartPageBase clickCartBtn() {
         cartIcon.click();
         return initPage(getDriver(), CartPageBase.class);
+    }
+
+    @Override
+    public MenuPageBase clickMenuBtn() {
+        menuIcon.click();
+        return initPage(getDriver(), MenuPageBase.class);
     }
 }

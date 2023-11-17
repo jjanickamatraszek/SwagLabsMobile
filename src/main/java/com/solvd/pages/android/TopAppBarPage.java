@@ -1,16 +1,18 @@
 package com.solvd.pages.android;
 
 import com.solvd.pages.common.CartPageBase;
+import com.solvd.pages.common.MenuPageBase;
 import com.solvd.pages.common.TopAppBarPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = TopAppBarPageBase.class)
 public class TopAppBarPage extends TopAppBarPageBase {
 
-    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Menu']")
+    @ExtendedFindBy(image = "images/menu.png")
     private ExtendedWebElement menuIcon;
 
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Cart']")
@@ -37,5 +39,11 @@ public class TopAppBarPage extends TopAppBarPageBase {
     public CartPageBase clickCartBtn() {
         cartIcon.click();
         return initPage(getDriver(), CartPageBase.class);
+    }
+
+    @Override
+    public MenuPageBase clickMenuBtn() {
+        menuIcon.click();
+        return initPage(getDriver(), MenuPageBase.class);
     }
 }

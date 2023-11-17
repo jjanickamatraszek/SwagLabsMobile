@@ -15,4 +15,6 @@ public abstract class TopAppBarPageBase extends AbstractPage implements IMobileU
     public abstract int getItemsAmountInCart();
 
     public abstract CartPageBase clickCartBtn();
+
+    public abstract MenuPageBase clickMenuBtn();
 }
