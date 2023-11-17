@@ -10,8 +10,6 @@ public abstract class DrawingPageBase extends AbstractPage implements IMobileUti
         super(driver);
     }
 
-    public abstract void drawLine(int fromX, int fromY, int toX, int toY);
-
     public abstract DrawingPageBase drawLine();
 
     public abstract boolean isLineDrawn();
