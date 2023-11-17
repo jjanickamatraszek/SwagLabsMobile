@@ -40,6 +40,13 @@
                     <include name="sortItemsByPriceDescInListLayoutTest"/>
                 </methods>
             </class>
+            <class name="com.solvd.drawing.DrawingTests">
+                <methods>
+                    <include name="drawLineTest"/>
+                    <include name="drawHouseTest"/>
+                    <include name="verifyPageTitleColorInCenterTest"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

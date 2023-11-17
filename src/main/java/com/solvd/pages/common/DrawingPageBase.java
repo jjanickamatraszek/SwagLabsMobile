@@ -4,6 +4,8 @@ import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
+import java.awt.*;
+
 public abstract class DrawingPageBase extends AbstractPage implements IMobileUtils {
 
     protected DrawingPageBase(WebDriver driver) {
@@ -17,4 +19,6 @@ public abstract class DrawingPageBase extends AbstractPage implements IMobileUti
     public abstract DrawingPageBase drawHouse();
 
     public abstract boolean isHouseDrawn();
+
+    public abstract Color getPageTitleColorInCenter();
 }

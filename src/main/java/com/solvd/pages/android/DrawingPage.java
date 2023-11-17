@@ -8,11 +8,16 @@ import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import java.awt.*;
+
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = DrawingPageBase.class)
 public class DrawingPage extends DrawingPageBase {
 
     @FindBy(xpath = "//android.view.View[@resource-id='signature-pad']//android.widget.Image")
     private ExtendedWebElement signaturePad;
+
+    @FindBy(xpath = "//android.view.ViewGroup[./android.widget.TextView[@text='DRAWING']]")
+    private ExtendedWebElement pageTitle;
 
     @ExtendedFindBy(image = "images/android/android_line.png")
     private ExtendedWebElement expectedLineImage;
@@ -69,5 +74,10 @@ public class DrawingPage extends DrawingPageBase {
     public boolean isHouseDrawn() {
         (new PageUtils()).setImageMatchThreshold(0.3);
         return expectedHouseImage.isPresent(3);
+    }
+
+    @Override
+    public Color getPageTitleColorInCenter() {
+        return (new PageUtils()).getElementColorInCenter(pageTitle);
     }
 }
