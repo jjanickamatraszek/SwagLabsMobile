@@ -4,6 +4,7 @@ import com.solvd.base.SauceDemoBaseTest;
 import com.solvd.pages.common.DrawingPageBase;
 import com.solvd.pages.common.TopAppBarPageBase;
 import com.solvd.utils.ImageColor;
+import com.zebrunner.agent.core.annotation.TestCaseKey;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,6 +13,7 @@ import java.awt.*;
 public class DrawingTests extends SauceDemoBaseTest {
 
     @Test
+    @TestCaseKey({"JOANNA-38"})
     public void drawLineTest() {
         authUtils.loginWithDefaultUser();
         TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
@@ -23,6 +25,7 @@ public class DrawingTests extends SauceDemoBaseTest {
     }
 
     @Test
+    @TestCaseKey({"JOANNA-39"})
     public void drawHouseTest() {
         authUtils.loginWithDefaultUser();
         TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
@@ -34,6 +37,7 @@ public class DrawingTests extends SauceDemoBaseTest {
     }
 
     @Test
+    @TestCaseKey({"JOANNA-40"})
     public void verifyPageTitleColorInCenterTest() {
         authUtils.loginWithDefaultUser();
         TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);

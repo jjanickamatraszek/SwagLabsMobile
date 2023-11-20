@@ -5,6 +5,7 @@ import com.solvd.dataProviders.DataProviders;
 import com.solvd.pages.common.CartPageBase;
 import com.solvd.pages.common.MainPageBase;
 import com.solvd.pages.common.TopAppBarPageBase;
+import com.zebrunner.agent.core.annotation.TestCaseKey;
 import com.zebrunner.carina.utils.resources.L10N;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -14,6 +15,7 @@ import java.util.List;
 public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
 
     @Test(dataProvider = "item titles to add single item to cart", dataProviderClass = DataProviders.class)
+    @TestCaseKey({"JOANNA-17"})
     public void addSingleItemToCartTest(String expectedItemTitle) {
         int expectedAmountOfItems = 1;
 
@@ -34,6 +36,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
     }
 
     @Test
+    @TestCaseKey({"JOANNA-18"})
     public void addFiveItemsToCartTest() {
         int expectedAmountOfItems = 5;
         List<String> itemTitles = List.of(L10N.getText("item1.title"),
@@ -56,6 +59,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
     }
 
     @Test(dataProvider = "item titles to add single item to cart", dataProviderClass = DataProviders.class)
+    @TestCaseKey({"JOANNA-19"})
     public void removeSingleItemFromCartTest(String expectedItemTitle) {
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
@@ -74,6 +78,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
     }
 
     @Test
+    @TestCaseKey({"JOANNA-20"})
     public void removeAllItemsFromCartTest() {
         List<String> itemTitles = List.of(L10N.getText("item1.title"),
                 L10N.getText("item2.title"), L10N.getText("item3.title"),
@@ -98,6 +103,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
     }
 
     @Test(dataProvider = "item titles to add single item to cart", dataProviderClass = DataProviders.class)
+    @TestCaseKey({"JOANNA-21"})
     public void addSingleItemToCartByDragAndDropTest(String expectedItemTitle) {
         int expectedAmountOfItems = 1;
 
@@ -119,6 +125,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
     }
 
     @Test(dataProvider = "item titles to add single item to cart", dataProviderClass = DataProviders.class)
+    @TestCaseKey({"JOANNA-22"})
     public void addSingleItemToCartInListLayoutTest(String expectedItemTitle) {
         int expectedAmountOfItems = 1;
 
@@ -140,6 +147,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
     }
 
     @Test
+    @TestCaseKey({"JOANNA-23"})
     public void addFiveItemsToCartInListLayoutTest() {
         int expectedAmountOfItems = 5;
         List<String> itemTitles = List.of(L10N.getText("item1.title"),
@@ -163,6 +171,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
     }
 
     @Test(dataProvider = "item titles to add single item to cart", dataProviderClass = DataProviders.class)
+    @TestCaseKey({"JOANNA-24"})
     public void removeSingleItemFromCartInListLayoutTest(String expectedItemTitle) {
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         mainPage.clickToggleLayoutBtn();
@@ -182,6 +191,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
     }
 
     @Test
+    @TestCaseKey({"JOANNA-25"})
     public void removeAllItemsFromCartInListLayoutTest() {
         List<String> itemTitles = List.of(L10N.getText("item1.title"),
                 L10N.getText("item2.title"), L10N.getText("item3.title"),
@@ -207,6 +217,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
     }
 
     @Test(dataProvider = "item titles to add single item to cart", dataProviderClass = DataProviders.class)
+    @TestCaseKey({"JOANNA-27"})
     public void addSingleItemToCartByDragAndDropInListLayoutTest(String expectedItemTitle) {
         int expectedAmountOfItems = 1;
 
