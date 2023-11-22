@@ -15,4 +15,11 @@ public class DataProviders {
     public Object[][] itemsForSingleItemToCart() {
         return new Object[][]{{L10N.getText("item2.title")}, {L10N.getText("item4.title")}};
     }
+
+    @DataProvider(name = "single items for deep link")
+    public Object[][] itemsForDeepLink() {
+        return new Object[][]{
+                {L10N.getText("item2.title"), L10N.getText("item2.indexNumber")},
+                {L10N.getText("item4.title"), L10N.getText("item4.indexNumber")}};
+    }
 }
