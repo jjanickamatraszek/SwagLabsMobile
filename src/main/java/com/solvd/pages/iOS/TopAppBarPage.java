@@ -37,13 +37,23 @@ public class TopAppBarPage extends TopAppBarPageBase {
 
     @Override
     public CartPageBase clickCartBtn() {
-        cartIcon.click();
+        tapRightBottomPartOfElement(cartIcon);
         return initPage(getDriver(), CartPageBase.class);
     }
 
     @Override
     public MenuPageBase clickMenuBtn() {
-        menuIcon.click();
+        tapRightBottomPartOfElement(menuIcon);
         return initPage(getDriver(), MenuPageBase.class);
+    }
+
+    private void tapRightBottomPartOfElement(ExtendedWebElement el) {
+        int width = el.getSize().getWidth();
+        int height = el.getSize().getHeight();
+        int x = el.getLocation().getX();
+        int y = el.getLocation().getY();
+        int movedX = (int) Math.round(x + width * 0.8);
+        int movedY = (int) Math.round(y + height * 0.8);
+        tap(movedX, movedY);
     }
 }
