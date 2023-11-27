@@ -72,8 +72,8 @@ public class LoginPageTest extends SauceDemoBaseTest {
     @TestCaseKey({"JOANNA-16"})
     public void loginCorrectlyAfterFailedAttemptTest() {
         authUtils.login(R.TESTDATA.get("username"), "invalid");
-        LoginPageBase loginPage = initPage(LoginPageBase.class);
-        Assert.assertTrue(loginPage.isErrorMessageDisplayed(), "Error message is not displayed after unsuccessful login");
+        Assert.assertTrue(initPage(LoginPageBase.class).isErrorMessageDisplayed(),
+                "Error message is not displayed after unsuccessful login");
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         Assert.assertTrue(mainPage.isPageOpened(), "Main page is not opened after failed attempt");

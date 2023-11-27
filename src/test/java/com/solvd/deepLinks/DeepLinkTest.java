@@ -49,13 +49,11 @@ public class DeepLinkTest extends SauceDemoBaseTest {
         (new PageUtils()).closeDeepLinkPopup();
 
         CartPageBase cartPage = initPage(CartPageBase.class);
-        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
-
         Assert.assertTrue(cartPage.isPageOpened(),
                 "Cart page hasn't been opened");
         Assert.assertTrue(cartPage.isItemTitleDisplayed(expectedItemTitle),
                 "Item '%s' isn't present in cart".formatted(expectedItemTitle));
-        Assert.assertEquals(topBar.getItemsAmountInCart(), expectedAmountOfItems,
+        Assert.assertEquals(initPage(TopAppBarPageBase.class).getItemsAmountInCart(), expectedAmountOfItems,
                 "Amount of items displayed on cart icon is different than expected");
     }
 
@@ -73,15 +71,13 @@ public class DeepLinkTest extends SauceDemoBaseTest {
         (new PageUtils()).closeDeepLinkPopup();
 
         CartPageBase cartPage = initPage(CartPageBase.class);
-        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
-
         Assert.assertTrue(cartPage.isPageOpened(),
                 "Cart page hasn't been opened");
         for (String expectedItemTitle : items.values()) {
             Assert.assertTrue(cartPage.isItemTitleDisplayed(expectedItemTitle),
                     "Item '%s' isn't present in the cart".formatted(expectedItemTitle));
         }
-        Assert.assertEquals(topBar.getItemsAmountInCart(), expectedAmountOfItems,
+        Assert.assertEquals(initPage(TopAppBarPageBase.class).getItemsAmountInCart(), expectedAmountOfItems,
                 "Amount of items displayed on cart icon is different than expected");
     }
 }
