@@ -6,7 +6,7 @@ import com.solvd.pages.common.CartPageBase;
 import com.solvd.pages.common.ItemPageBase;
 import com.solvd.pages.common.TopAppBarPageBase;
 import com.solvd.utils.DeepLink;
-import com.solvd.utils.PageUtils;
+import com.solvd.utils.DeepLinkUtils;
 import com.zebrunner.agent.core.annotation.TestCaseKey;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.resources.L10N;
@@ -17,10 +17,12 @@ import java.util.Map;
 
 public class DeepLinkTest extends SauceDemoBaseTest {
     private final String appPackageName = R.CONFIG.get("capabilities.appPackage");
+    private final DeepLinkUtils deepLinkUtils = new DeepLinkUtils();
 
     @Test(dataProvider = "single items for deep link", dataProviderClass = DataProviders.class)
     @TestCaseKey({"JOANNA-41"})
     public void openItemPageByDeepLinkTest(String title, String itemIndexNumber) {
+        String platform = R.CONFIG.get("capabilities.platformName");
         String expectedItemTitle = L10N.getText(title);
         String deepLink = DeepLink.CART.getUrl() + itemIndexNumber;
 
@@ -28,7 +30,11 @@ public class DeepLinkTest extends SauceDemoBaseTest {
         Assert.assertFalse(isAppRunning(appPackageName),
                 "Swag Labs app is still running although it should be terminated.");
 
-        (new PageUtils()).openDeepLink(deepLink);
+        if (platform.equalsIgnoreCase("iOS")) {
+            deepLinkUtils.openDeepLinkViaSafari(deepLink);
+        } else {
+            deepLinkUtils.openDeeplinkViaDriver(deepLink);
+        }
 
         ItemPageBase itemPage = initPage(ItemPageBase.class);
         Assert.assertTrue(itemPage.isPageOpened(),
@@ -45,8 +51,7 @@ public class DeepLinkTest extends SauceDemoBaseTest {
         int expectedAmountOfItems = 1;
 
         terminateApp(appPackageName);
-        getDriver().get(DeepLink.CART.getUrl() + itemIndexNumber);
-        (new PageUtils()).closeDeepLinkPopup();
+        deepLinkUtils.openDeeplinkViaDriver(DeepLink.CART.getUrl() + itemIndexNumber);
 
         CartPageBase cartPage = initPage(CartPageBase.class);
         Assert.assertTrue(cartPage.isPageOpened(),
@@ -67,8 +72,7 @@ public class DeepLinkTest extends SauceDemoBaseTest {
         int expectedAmountOfItems = 3;
 
         terminateApp(appPackageName);
-        getDriver().get(DeepLink.CART.getUrl() + String.join(",", items.keySet()));
-        (new PageUtils()).closeDeepLinkPopup();
+        deepLinkUtils.openDeeplinkViaDriver(DeepLink.CART.getUrl() + String.join(",", items.keySet()));
 
         CartPageBase cartPage = initPage(CartPageBase.class);
         Assert.assertTrue(cartPage.isPageOpened(),

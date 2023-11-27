@@ -1,8 +1,5 @@
 package com.solvd.utils;
 
-import com.solvd.pages.ios.PopupPage;
-import com.solvd.pages.ios.browser.SafariStartPage;
-import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -72,27 +69,5 @@ public class PageUtils implements ICustomTypePageFactory, IMobileUtils {
         int movedX = (int) Math.round(x + width * 0.8);
         int movedY = (int) Math.round(y + height * 0.8);
         tap(movedX, movedY);
-    }
-
-    public void closeDeepLinkPopup() {
-        if (R.CONFIG.get("capabilities.platformName").equals("iOS")) {
-            PopupPage popup = new PopupPage(getDriver());
-            if (popup.isPageOpened(1)) {
-                popup.clickOpenBtn();
-            }
-        }
-    }
-
-    public void openDeepLink(String deepLink) {
-        String platform = R.CONFIG.get("capabilities.platformName");
-        if (platform.equalsIgnoreCase("iOS")) {
-            startApp("com.apple.mobilesafari");
-            SafariStartPage safari = new SafariStartPage(getDriver());
-            safari.typeDeepLink(deepLink);
-            safari.clickGoKey();
-        } else {
-            getDriver().get(deepLink);
-        }
-        closeDeepLinkPopup();
     }
 }
