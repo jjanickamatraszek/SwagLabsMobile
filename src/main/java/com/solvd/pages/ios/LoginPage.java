@@ -1,4 +1,4 @@
-package com.solvd.pages.iOS;
+package com.solvd.pages.ios;
 
 import com.solvd.pages.common.LoginPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;

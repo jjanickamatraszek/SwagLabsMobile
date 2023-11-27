@@ -1,6 +1,7 @@
 package com.solvd.utils;
 
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
+import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import io.appium.java_client.HasSettings;
 import io.appium.java_client.Setting;
@@ -19,7 +20,7 @@ import java.io.UncheckedIOException;
 import java.time.Duration;
 import java.util.List;
 
-public class PageUtils implements ICustomTypePageFactory {
+public class PageUtils implements ICustomTypePageFactory, IMobileUtils {
 
     public void setImageMatchThreshold(double value) {
         HasSettings driver = (HasSettings) getDriver();
@@ -58,5 +59,15 @@ public class PageUtils implements ICustomTypePageFactory {
         } catch (ClassCastException e) {
             throw new UnsupportedOperationException("Driver doesn't support drawing method", e);
         }
+    }
+
+    public void tapRightBottomPartOfElement(ExtendedWebElement el) {
+        int width = el.getSize().getWidth();
+        int height = el.getSize().getHeight();
+        int x = el.getLocation().getX();
+        int y = el.getLocation().getY();
+        int movedX = (int) Math.round(x + width * 0.8);
+        int movedY = (int) Math.round(y + height * 0.8);
+        tap(movedX, movedY);
     }
 }
