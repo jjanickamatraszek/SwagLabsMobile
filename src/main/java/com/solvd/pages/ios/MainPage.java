@@ -68,7 +68,7 @@ public class MainPage extends MainPageBase {
     @Override
     public SortModalPageBase clickSortBtn() {
         sortBtn.click();
-        return initPage(getDriver(), SortModalPageBase.class);
+        return initPage(SortModalPageBase.class);
     }
 
     @Override

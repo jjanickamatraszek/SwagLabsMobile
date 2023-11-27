@@ -38,12 +38,12 @@ public class TopAppBarPage extends TopAppBarPageBase {
     @Override
     public CartPageBase clickCartBtn() {
         cartIcon.click();
-        return initPage(getDriver(), CartPageBase.class);
+        return initPage(CartPageBase.class);
     }
 
     @Override
     public MenuPageBase clickMenuBtn() {
         menuIcon.click();
-        return initPage(getDriver(), MenuPageBase.class);
+        return initPage(MenuPageBase.class);
     }
 }

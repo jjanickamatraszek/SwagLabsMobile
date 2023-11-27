@@ -26,7 +26,7 @@ public class LoginPageTest extends SauceDemoBaseTest {
         String expectedErrorMessage = USERNAME_REQUIRED.get();
 
         authUtils.login("", password);
-        LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
+        LoginPageBase loginPage = initPage(LoginPageBase.class);
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(expectedErrorMessage),
                 "Error message is not displayed with expected text. Expected: '%s'. Actual: '%s'"
                         .formatted(expectedErrorMessage, loginPage.getErrorMessageText()));
@@ -38,7 +38,7 @@ public class LoginPageTest extends SauceDemoBaseTest {
         String expectedErrorMessage = PASSWORD_REQUIRED.get();
 
         authUtils.login(R.TESTDATA.get("username"), "");
-        LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
+        LoginPageBase loginPage = initPage(LoginPageBase.class);
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(expectedErrorMessage),
                 "Error message is not displayed with expected text. Expected: '%s'. Actual: '%s'"
                         .formatted(expectedErrorMessage, loginPage.getErrorMessageText()));
@@ -50,7 +50,7 @@ public class LoginPageTest extends SauceDemoBaseTest {
         String expectedErrorMessage = CREDS_DONT_MATCH.get();
 
         authUtils.login("invalid", R.TESTDATA.get("password"));
-        LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
+        LoginPageBase loginPage = initPage(LoginPageBase.class);
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(expectedErrorMessage),
                 "Error message is not displayed with expected text. Expected: '%s'. Actual: '%s'"
                         .formatted(expectedErrorMessage, loginPage.getErrorMessageText()));
@@ -62,7 +62,7 @@ public class LoginPageTest extends SauceDemoBaseTest {
         String expectedErrorMessage = CREDS_DONT_MATCH.get();
 
         authUtils.login(R.TESTDATA.get("username"), "invalid");
-        LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
+        LoginPageBase loginPage = initPage(LoginPageBase.class);
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(expectedErrorMessage),
                 "Error message is not displayed with expected text. Expected: '%s'. Actual: '%s'"
                         .formatted(expectedErrorMessage, loginPage.getErrorMessageText()));
@@ -72,7 +72,7 @@ public class LoginPageTest extends SauceDemoBaseTest {
     @TestCaseKey({"JOANNA-16"})
     public void loginCorrectlyAfterFailedAttemptTest() {
         authUtils.login(R.TESTDATA.get("username"), "invalid");
-        LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
+        LoginPageBase loginPage = initPage(LoginPageBase.class);
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(), "Error message is not displayed after unsuccessful login");
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();

@@ -30,7 +30,7 @@ public class DeepLinkTest extends SauceDemoBaseTest {
 
         (new PageUtils()).openDeepLink(deepLink);
 
-        ItemPageBase itemPage = initPage(getDriver(), ItemPageBase.class);
+        ItemPageBase itemPage = initPage(ItemPageBase.class);
         Assert.assertTrue(itemPage.isPageOpened(),
                 "Item page hasn't been opened");
         Assert.assertEquals(itemPage.getTitle(), expectedItemTitle,
@@ -48,8 +48,8 @@ public class DeepLinkTest extends SauceDemoBaseTest {
         getDriver().get(DeepLink.CART.getUrl() + itemIndexNumber);
         (new PageUtils()).closeDeepLinkPopup();
 
-        CartPageBase cartPage = initPage(getDriver(), CartPageBase.class);
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        CartPageBase cartPage = initPage(CartPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
 
         Assert.assertTrue(cartPage.isPageOpened(),
                 "Cart page hasn't been opened");
@@ -72,8 +72,8 @@ public class DeepLinkTest extends SauceDemoBaseTest {
         getDriver().get(DeepLink.CART.getUrl() + String.join(",", items.keySet()));
         (new PageUtils()).closeDeepLinkPopup();
 
-        CartPageBase cartPage = initPage(getDriver(), CartPageBase.class);
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        CartPageBase cartPage = initPage(CartPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
 
         Assert.assertTrue(cartPage.isPageOpened(),
                 "Cart page hasn't been opened");

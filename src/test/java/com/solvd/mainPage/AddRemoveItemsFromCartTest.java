@@ -20,7 +20,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
         int expectedAmountOfItems = 1;
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
 
         Assert.assertTrue(mainPage.isItemTitleDisplayed(expectedItemTitle),
                 "Item '%s' isn't present on the screen".formatted(expectedItemTitle));
@@ -44,7 +44,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
                 L10N.getText("item4.title"), L10N.getText("item5.title"));
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         for (String expectedItemTitle : itemTitles) {
             mainPage.clickAddToCartBtn(expectedItemTitle);
         }
@@ -62,7 +62,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
     @TestCaseKey({"JOANNA-19"})
     public void removeSingleItemFromCartTest(String expectedItemTitle) {
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         mainPage.clickAddToCartBtn(L10N.getText("item1.title"));
         mainPage.clickAddToCartBtn(expectedItemTitle);
         mainPage.clickRemoveItemFromCartBtn(expectedItemTitle);
@@ -72,7 +72,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
         Assert.assertEquals(topBar.getItemsAmountInCart(), 1,
                 "Amount of items on cart icon didn't decrease after removing item from cart");
 
-        CartPageBase cartPage = initPage(getDriver(), TopAppBarPageBase.class).clickCartBtn();
+        CartPageBase cartPage = initPage(TopAppBarPageBase.class).clickCartBtn();
         Assert.assertFalse(cartPage.swipeToItemTitle(expectedItemTitle, Direction.UP, 4),
                 "Item '%s' is still present in cart".formatted(expectedItemTitle));
     }
@@ -85,7 +85,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
                 L10N.getText("item4.title"), L10N.getText("item5.title"));
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         for (String expectedItemTitle : itemTitles) {
             mainPage.clickAddToCartBtn(expectedItemTitle);
         }
@@ -108,7 +108,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
         int expectedAmountOfItems = 1;
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
 
         Assert.assertTrue(mainPage.isItemTitleDisplayed(expectedItemTitle),
                 "Item '%s' isn't present on the screen".formatted(expectedItemTitle));
@@ -131,7 +131,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         mainPage.clickToggleLayoutBtn();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
 
         Assert.assertTrue(mainPage.isItemTitleDisplayed(expectedItemTitle),
                 "Item '%s' isn't present on the screen".formatted(expectedItemTitle));
@@ -156,7 +156,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         mainPage.clickToggleLayoutBtn();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         for (String expectedItemTitle : itemTitles) {
             mainPage.clickAddToCartBtn(expectedItemTitle);
         }
@@ -175,7 +175,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
     public void removeSingleItemFromCartInListLayoutTest(String expectedItemTitle) {
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         mainPage.clickToggleLayoutBtn();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         mainPage.clickAddToCartBtn(L10N.getText("item1.title"));
         mainPage.clickAddToCartBtn(expectedItemTitle);
         mainPage.clickRemoveItemFromCartBtn(expectedItemTitle);
@@ -185,7 +185,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
         Assert.assertEquals(topBar.getItemsAmountInCart(), 1,
                 "Amount of items on cart icon didn't decrease after removing item from cart");
 
-        CartPageBase cartPage = initPage(getDriver(), TopAppBarPageBase.class).clickCartBtn();
+        CartPageBase cartPage = initPage(TopAppBarPageBase.class).clickCartBtn();
         Assert.assertFalse(cartPage.swipeToItemTitle(expectedItemTitle, Direction.UP, 4),
                 "Item '%s' is still present in cart".formatted(expectedItemTitle));
     }
@@ -199,7 +199,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         mainPage.clickToggleLayoutBtn();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         for (String expectedItemTitle : itemTitles) {
             mainPage.clickAddToCartBtn(expectedItemTitle);
         }
@@ -223,7 +223,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         mainPage.clickToggleLayoutBtn();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
 
         Assert.assertTrue(mainPage.isItemTitleDisplayed(expectedItemTitle),
                 "Item '%s' isn't present on the screen".formatted(expectedItemTitle));
