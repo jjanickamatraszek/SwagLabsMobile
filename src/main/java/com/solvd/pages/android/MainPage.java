@@ -95,14 +95,18 @@ public class MainPage extends MainPageBase {
     @Override
     public MainPageBase clickAddToCartBtn(String itemTitle) {
         swipeToAddRemoveFromCartBtn(itemTitle, Direction.UP);
-        addItemToCartBtnFormatted.format(itemTitle).click();
+        if (addRemoveBtnContainerFormatted.format(itemTitle).isVisible()) {
+            addItemToCartBtnFormatted.format(itemTitle).click();
+        }
         return this;
     }
 
     @Override
     public MainPageBase addItemToCartByDragAndDrop(String itemTitle) {
         swipeToAddRemoveFromCartBtn(itemTitle, Direction.UP);
-        dragAndDrop(itemDragHandleFormatted.format(itemTitle), dropArea);
+        if (itemDragHandleFormatted.format(itemTitle).isVisible()) {
+            dragAndDrop(itemDragHandleFormatted.format(itemTitle), dropArea);
+        }
         return this;
     }
 

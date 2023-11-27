@@ -1,4 +1,4 @@
-package com.solvd.pages.iOS;
+package com.solvd.pages.ios;
 
 import com.solvd.pages.common.DrawingPageBase;
 import com.solvd.utils.PageUtils;

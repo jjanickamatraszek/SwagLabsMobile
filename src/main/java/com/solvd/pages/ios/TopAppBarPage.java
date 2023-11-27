@@ -1,8 +1,9 @@
-package com.solvd.pages.iOS;
+package com.solvd.pages.ios;
 
 import com.solvd.pages.common.CartPageBase;
 import com.solvd.pages.common.MenuPageBase;
 import com.solvd.pages.common.TopAppBarPageBase;
+import com.solvd.utils.PageUtils;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
@@ -21,8 +22,11 @@ public class TopAppBarPage extends TopAppBarPageBase {
     @FindBy(xpath = "//XCUIElementTypeOther[@name='test-Cart']/XCUIElementTypeOther[@name]")
     private ExtendedWebElement amountOfItemInCart;
 
+    private PageUtils pageUtils;
+
     public TopAppBarPage(WebDriver driver) {
         super(driver);
+        pageUtils = new PageUtils();
     }
 
     @Override
@@ -37,13 +41,13 @@ public class TopAppBarPage extends TopAppBarPageBase {
 
     @Override
     public CartPageBase clickCartBtn() {
-        cartIcon.click();
+        pageUtils.tapRightBottomPartOfElement(cartIcon);
         return initPage(getDriver(), CartPageBase.class);
     }
 
     @Override
     public MenuPageBase clickMenuBtn() {
-        menuIcon.click();
+        pageUtils.tapRightBottomPartOfElement(menuIcon);
         return initPage(getDriver(), MenuPageBase.class);
     }
 }
