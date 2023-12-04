@@ -1,7 +1,6 @@
 package com.solvd.pages.ios;
 
 import com.solvd.pages.common.DrawingPageBase;
-import com.solvd.utils.PageUtils;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
@@ -24,11 +23,8 @@ public class DrawingPage extends DrawingPageBase {
     @ExtendedFindBy(image = "images/ios/ios_house.png")
     private ExtendedWebElement expectedHouseImage;
 
-    private final PageUtils pageUtils;
-
     public DrawingPage(WebDriver driver) {
         super(driver);
-        pageUtils = new PageUtils();
     }
 
     @Override

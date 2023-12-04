@@ -3,7 +3,6 @@ package com.solvd.pages.ios;
 import com.solvd.pages.common.CartPageBase;
 import com.solvd.pages.common.MenuPageBase;
 import com.solvd.pages.common.TopAppBarPageBase;
-import com.solvd.utils.PageUtils;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
@@ -22,11 +21,8 @@ public class TopAppBarPage extends TopAppBarPageBase {
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name=='test-Cart'`]/XCUIElementTypeOther")
     private ExtendedWebElement amountOfItemInCart;
 
-    private PageUtils pageUtils;
-
     public TopAppBarPage(WebDriver driver) {
         super(driver);
-        pageUtils = new PageUtils();
     }
 
     @Override

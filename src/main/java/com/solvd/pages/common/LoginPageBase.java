@@ -1,9 +1,8 @@
 package com.solvd.pages.common;
 
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
-public abstract class LoginPageBase extends AbstractPage {
+public abstract class LoginPageBase extends BaseSauceDemoPageBase {
 
     public LoginPageBase(WebDriver driver) {
         super(driver);
