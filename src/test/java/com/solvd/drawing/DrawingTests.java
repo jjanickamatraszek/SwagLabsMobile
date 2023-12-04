@@ -16,7 +16,7 @@ public class DrawingTests extends SauceDemoBaseTest {
     @TestCaseKey({"JOANNA-38"})
     public void drawLineTest() {
         authUtils.loginWithDefaultUser();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         DrawingPageBase drawingPage = topBar.clickMenuBtn()
                 .navigateToDrawingPage()
                 .drawLine();
@@ -28,7 +28,7 @@ public class DrawingTests extends SauceDemoBaseTest {
     @TestCaseKey({"JOANNA-39"})
     public void drawHouseTest() {
         authUtils.loginWithDefaultUser();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         DrawingPageBase drawingPage = topBar.clickMenuBtn()
                 .navigateToDrawingPage()
                 .drawHouse();
@@ -40,7 +40,7 @@ public class DrawingTests extends SauceDemoBaseTest {
     @TestCaseKey({"JOANNA-40"})
     public void verifyPageTitleColorInCenterTest() {
         authUtils.loginWithDefaultUser();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         DrawingPageBase drawingPage = topBar.clickMenuBtn()
                 .navigateToDrawingPage();
         Color actualPageTitleColor = drawingPage.getPageTitleColorInCenter();

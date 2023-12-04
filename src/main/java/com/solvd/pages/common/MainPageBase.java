@@ -1,14 +1,12 @@
 package com.solvd.pages.common;
 
 import com.solvd.utils.SortOption;
-import com.zebrunner.carina.utils.mobile.IMobileUtils;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public abstract class MainPageBase extends AbstractPage implements IMobileUtils {
+public abstract class MainPageBase extends BaseSauceDemoPageBase {
 
     public MainPageBase(WebDriver driver) {
         super(driver);

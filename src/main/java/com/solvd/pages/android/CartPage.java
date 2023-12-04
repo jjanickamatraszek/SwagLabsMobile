@@ -3,6 +3,7 @@ package com.solvd.pages.android;
 import com.solvd.pages.common.CartPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -10,8 +11,8 @@ import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CartPageBase.class)
 public class CartPage extends CartPageBase {
 
-    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Menu']/..")
-    private ExtendedWebElement topAppBar;
+    @FindBy(xpath = "//android.view.ViewGroup[.//android.view.ViewGroup[@content-desc='test-Menu']]/following-sibling::android.view.ViewGroup[count(android.widget.TextView)=1]")
+    private ExtendedWebElement pageTitle;
 
     @FindBy(xpath = "//android.widget.ScrollView[@content-desc='test-Cart Content']")
     private ExtendedWebElement itemsContainer;
@@ -27,6 +28,8 @@ public class CartPage extends CartPageBase {
 
     public CartPage(WebDriver driver) {
         super(driver);
+        setUiLoadedMarker(pageTitle);
+        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
     }
 
     @Override

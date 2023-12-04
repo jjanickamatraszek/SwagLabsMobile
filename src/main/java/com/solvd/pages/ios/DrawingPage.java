@@ -1,22 +1,20 @@
 package com.solvd.pages.ios;
 
 import com.solvd.pages.common.DrawingPageBase;
-import com.solvd.utils.PageUtils;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 import java.awt.*;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = DrawingPageBase.class)
 public class DrawingPage extends DrawingPageBase {
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name='Signature Pad demo']")
+    @ExtendedFindBy(iosPredicate = "name = 'Signature Pad demo'")
     private ExtendedWebElement signaturePad;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name='DRAWING']")
+    @ExtendedFindBy(iosPredicate = "name ='DRAWING'")
     private ExtendedWebElement pageTitle;
 
     @ExtendedFindBy(image = "images/ios/ios_line.png")
@@ -42,7 +40,7 @@ public class DrawingPage extends DrawingPageBase {
         int toX = fromX + 200;
         int toY = fromY + 200;
 
-        (new PageUtils()).drawLine(fromX, fromY, toX, toY);
+        pageUtils.drawLine(fromX, fromY, toX, toY);
         return this;
     }
 
@@ -58,7 +56,6 @@ public class DrawingPage extends DrawingPageBase {
         int fromX = x + 40;
         int fromY = y + 200;
 
-        PageUtils pageUtils = new PageUtils();
         pageUtils.drawLine(fromX, fromY, fromX + 300, fromY);
         pageUtils.drawLine(fromX + 50, fromY + 200, fromX + 270, fromY + 200);
         pageUtils.drawLine(fromX + 50, fromY, fromX + 50, fromY + 220);
@@ -70,12 +67,12 @@ public class DrawingPage extends DrawingPageBase {
 
     @Override
     public boolean isHouseDrawn() {
-        (new PageUtils()).setImageMatchThreshold(0.3);
+        pageUtils.setImageMatchThreshold(0.3);
         return expectedHouseImage.isVisible(3);
     }
 
     @Override
     public Color getPageTitleColorInCenter() {
-        return (new PageUtils()).getElementColorInCenter(pageTitle);
+        return pageUtils.getElementColorInCenter(pageTitle);
     }
 }

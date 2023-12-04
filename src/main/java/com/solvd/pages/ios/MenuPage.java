@@ -13,7 +13,6 @@ public class MenuPage extends MenuPageBase {
     @iOSXCUITFindBy(accessibility = "test-DRAWING")
     private ExtendedWebElement drawingLink;
 
-
     public MenuPage(WebDriver driver) {
         super(driver);
     }
@@ -21,6 +20,6 @@ public class MenuPage extends MenuPageBase {
     @Override
     public DrawingPageBase navigateToDrawingPage() {
         drawingLink.click();
-        return initPage(getDriver(), DrawingPageBase.class);
+        return initPage(DrawingPageBase.class);
     }
 }

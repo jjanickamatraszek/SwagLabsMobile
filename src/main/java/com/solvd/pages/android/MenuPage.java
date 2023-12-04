@@ -20,6 +20,6 @@ public class MenuPage extends MenuPageBase {
     @Override
     public DrawingPageBase navigateToDrawingPage() {
         drawingLink.click();
-        return initPage(getDriver(), DrawingPageBase.class);
+        return initPage(DrawingPageBase.class);
     }
 }

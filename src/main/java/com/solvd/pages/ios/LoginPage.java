@@ -3,9 +3,9 @@ package com.solvd.pages.ios;
 import com.solvd.pages.common.LoginPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase {
@@ -19,7 +19,7 @@ public class LoginPage extends LoginPageBase {
     @iOSXCUITFindBy(accessibility = "test-LOGIN")
     private ExtendedWebElement loginBtn;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name='test-Error message']/XCUIElementTypeStaticText")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name='test-Error message'`]/XCUIElementTypeStaticText")
     private ExtendedWebElement errorMessageText;
 
     public LoginPage(WebDriver driver) {

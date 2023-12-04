@@ -8,7 +8,7 @@ import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 public class AuthUtils implements ICustomTypePageFactory {
 
     public void login(String username, String password) {
-        LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
+        LoginPageBase loginPage = initPage(LoginPageBase.class);
         loginPage.typeName(username);
         loginPage.typePassword(password);
         loginPage.clickLoginBtn();
@@ -16,6 +16,6 @@ public class AuthUtils implements ICustomTypePageFactory {
 
     public MainPageBase loginWithDefaultUser() {
         login(R.TESTDATA.get("username"), R.TESTDATA.get("password"));
-        return initPage(getDriver(), MainPageBase.class);
+        return initPage(MainPageBase.class);
     }
 }

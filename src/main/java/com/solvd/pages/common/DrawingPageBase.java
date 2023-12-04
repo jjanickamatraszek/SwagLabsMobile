@@ -1,12 +1,10 @@
 package com.solvd.pages.common;
 
-import com.zebrunner.carina.utils.mobile.IMobileUtils;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
 
-public abstract class DrawingPageBase extends AbstractPage implements IMobileUtils {
+public abstract class DrawingPageBase extends BaseSauceDemoPageBase {
 
     protected DrawingPageBase(WebDriver driver) {
         super(driver);

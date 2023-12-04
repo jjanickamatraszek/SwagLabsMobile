@@ -3,12 +3,11 @@ package com.solvd.pages.ios;
 import com.solvd.pages.common.CartPageBase;
 import com.solvd.pages.common.MenuPageBase;
 import com.solvd.pages.common.TopAppBarPageBase;
-import com.solvd.utils.PageUtils;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = TopAppBarPageBase.class)
 public class TopAppBarPage extends TopAppBarPageBase {
@@ -19,19 +18,16 @@ public class TopAppBarPage extends TopAppBarPageBase {
     @iOSXCUITFindBy(accessibility = "test-Cart")
     private ExtendedWebElement cartIcon;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name='test-Cart']/XCUIElementTypeOther[@name]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name=='test-Cart'`]/XCUIElementTypeOther")
     private ExtendedWebElement amountOfItemInCart;
-
-    private PageUtils pageUtils;
 
     public TopAppBarPage(WebDriver driver) {
         super(driver);
-        pageUtils = new PageUtils();
     }
 
     @Override
     public boolean isItemsAmountVisible() {
-        return amountOfItemInCart.isVisible(1);
+        return "".equalsIgnoreCase(amountOfItemInCart.getAttribute("name"));
     }
 
     @Override
@@ -42,12 +38,12 @@ public class TopAppBarPage extends TopAppBarPageBase {
     @Override
     public CartPageBase clickCartBtn() {
         pageUtils.tapRightBottomPartOfElement(cartIcon);
-        return initPage(getDriver(), CartPageBase.class);
+        return initPage(CartPageBase.class);
     }
 
     @Override
     public MenuPageBase clickMenuBtn() {
         pageUtils.tapRightBottomPartOfElement(menuIcon);
-        return initPage(getDriver(), MenuPageBase.class);
+        return initPage(MenuPageBase.class);
     }
 }

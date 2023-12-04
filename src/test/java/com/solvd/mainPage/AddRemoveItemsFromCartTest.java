@@ -20,13 +20,13 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
         int expectedAmountOfItems = 1;
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
-
         Assert.assertTrue(mainPage.isItemTitleDisplayed(expectedItemTitle),
                 "Item '%s' isn't present on the screen".formatted(expectedItemTitle));
         mainPage.clickAddToCartBtn(expectedItemTitle);
         Assert.assertTrue(mainPage.isRemoveBtnForItemVisible(expectedItemTitle),
                 "Remove btn for item '%s' isn't visible after adding item to cart".formatted(expectedItemTitle));
+
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         Assert.assertEquals(topBar.getItemsAmountInCart(), expectedAmountOfItems,
                 "Amount of items displayed on cart icon is different than expected");
 
@@ -44,13 +44,14 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
                 L10N.getText("item4.title"), L10N.getText("item5.title"));
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
         for (String expectedItemTitle : itemTitles) {
             mainPage.clickAddToCartBtn(expectedItemTitle);
         }
 
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         Assert.assertEquals(topBar.getItemsAmountInCart(), expectedAmountOfItems,
                 "Amount of items displayed on cart icon is different than expected");
+
         CartPageBase cartPage = topBar.clickCartBtn();
         for (String expectedItemTitle : itemTitles) {
             Assert.assertTrue(cartPage.isItemTitleDisplayed(expectedItemTitle),
@@ -62,17 +63,17 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
     @TestCaseKey({"JOANNA-19"})
     public void removeSingleItemFromCartTest(String expectedItemTitle) {
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
         mainPage.clickAddToCartBtn(L10N.getText("item1.title"));
         mainPage.clickAddToCartBtn(expectedItemTitle);
         mainPage.clickRemoveItemFromCartBtn(expectedItemTitle);
-
         Assert.assertTrue(mainPage.isAddToCartBtnForItemVisible(expectedItemTitle),
                 "Btn 'Add to cart' didn't appear after removing item from cart");
+
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         Assert.assertEquals(topBar.getItemsAmountInCart(), 1,
                 "Amount of items on cart icon didn't decrease after removing item from cart");
 
-        CartPageBase cartPage = initPage(getDriver(), TopAppBarPageBase.class).clickCartBtn();
+        CartPageBase cartPage = topBar.clickCartBtn();
         Assert.assertFalse(cartPage.swipeToItemTitle(expectedItemTitle, Direction.UP, 4),
                 "Item '%s' is still present in cart".formatted(expectedItemTitle));
     }
@@ -85,7 +86,6 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
                 L10N.getText("item4.title"), L10N.getText("item5.title"));
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
         for (String expectedItemTitle : itemTitles) {
             mainPage.clickAddToCartBtn(expectedItemTitle);
         }
@@ -94,6 +94,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
             mainPage.clickRemoveItemFromCartBtn(expectedItemTitle);
         }
 
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         Assert.assertFalse(topBar.isItemsAmountVisible(),
                 "Amount of items on cart icon is still visible after removing all items from cart");
 
@@ -108,14 +109,13 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
         int expectedAmountOfItems = 1;
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
-
         Assert.assertTrue(mainPage.isItemTitleDisplayed(expectedItemTitle),
                 "Item '%s' isn't present on the screen".formatted(expectedItemTitle));
         mainPage.addItemToCartByDragAndDrop(expectedItemTitle);
-
         Assert.assertTrue(mainPage.isRemoveBtnForItemVisible(expectedItemTitle),
                 "Remove btn for item '%s' isn't visible after adding item to cart".formatted(expectedItemTitle));
+
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         Assert.assertEquals(topBar.getItemsAmountInCart(), expectedAmountOfItems,
                 "Amount of items displayed on cart icon is different than expected");
 
@@ -131,7 +131,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         mainPage.clickToggleLayoutBtn();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
 
         Assert.assertTrue(mainPage.isItemTitleDisplayed(expectedItemTitle),
                 "Item '%s' isn't present on the screen".formatted(expectedItemTitle));
@@ -156,11 +156,11 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         mainPage.clickToggleLayoutBtn();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
         for (String expectedItemTitle : itemTitles) {
             mainPage.clickAddToCartBtn(expectedItemTitle);
         }
 
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         Assert.assertEquals(topBar.getItemsAmountInCart(), expectedAmountOfItems,
                 "Amount of items displayed on cart icon is different than expected");
         CartPageBase cartPage = topBar.clickCartBtn();
@@ -175,17 +175,17 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
     public void removeSingleItemFromCartInListLayoutTest(String expectedItemTitle) {
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         mainPage.clickToggleLayoutBtn();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
         mainPage.clickAddToCartBtn(L10N.getText("item1.title"));
         mainPage.clickAddToCartBtn(expectedItemTitle);
         mainPage.clickRemoveItemFromCartBtn(expectedItemTitle);
-
         Assert.assertTrue(mainPage.isAddToCartBtnForItemVisible(expectedItemTitle),
                 "Btn 'Add to cart' didn't appear after removing item from cart");
+
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         Assert.assertEquals(topBar.getItemsAmountInCart(), 1,
                 "Amount of items on cart icon didn't decrease after removing item from cart");
 
-        CartPageBase cartPage = initPage(getDriver(), TopAppBarPageBase.class).clickCartBtn();
+        CartPageBase cartPage = topBar.clickCartBtn();
         Assert.assertFalse(cartPage.swipeToItemTitle(expectedItemTitle, Direction.UP, 4),
                 "Item '%s' is still present in cart".formatted(expectedItemTitle));
     }
@@ -199,7 +199,6 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         mainPage.clickToggleLayoutBtn();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
         for (String expectedItemTitle : itemTitles) {
             mainPage.clickAddToCartBtn(expectedItemTitle);
         }
@@ -208,6 +207,7 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
             mainPage.clickRemoveItemFromCartBtn(expectedItemTitle);
         }
 
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         Assert.assertFalse(topBar.isItemsAmountVisible(),
                 "Amount of items on cart icon is still visible after removing all items from cart");
 
@@ -223,14 +223,13 @@ public class AddRemoveItemsFromCartTest extends SauceDemoBaseTest {
 
         MainPageBase mainPage = authUtils.loginWithDefaultUser();
         mainPage.clickToggleLayoutBtn();
-        TopAppBarPageBase topBar = initPage(getDriver(), TopAppBarPageBase.class);
-
         Assert.assertTrue(mainPage.isItemTitleDisplayed(expectedItemTitle),
                 "Item '%s' isn't present on the screen".formatted(expectedItemTitle));
         mainPage.addItemToCartByDragAndDrop(expectedItemTitle);
-
         Assert.assertTrue(mainPage.isRemoveBtnForItemVisible(expectedItemTitle),
                 "Remove btn for item '%s' isn't visible after adding item to cart".formatted(expectedItemTitle));
+
+        TopAppBarPageBase topBar = initPage(TopAppBarPageBase.class);
         Assert.assertEquals(topBar.getItemsAmountInCart(), expectedAmountOfItems,
                 "Amount of items displayed on cart icon is different than expected");
 
