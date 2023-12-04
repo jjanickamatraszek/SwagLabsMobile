@@ -13,7 +13,6 @@ public class MenuPage extends MenuPageBase {
     @iOSXCUITFindBy(accessibility = "test-DRAWING")
     private ExtendedWebElement drawingLink;
 
-
     public MenuPage(WebDriver driver) {
         super(driver);
     }

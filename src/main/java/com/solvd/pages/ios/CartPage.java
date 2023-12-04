@@ -4,23 +4,23 @@ import com.solvd.pages.common.CartPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CartPageBase.class)
 public class CartPage extends CartPageBase {
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name='YOUR CART']")
+    @ExtendedFindBy(iosPredicate = "name = 'YOUR CART'")
     private ExtendedWebElement pageTitle;
 
     @iOSXCUITFindBy(accessibility = "test-Cart Content")
     private ExtendedWebElement itemsContainer;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name='test-Item]")
+    @ExtendedFindBy(iosPredicate = "name = 'test-Item'")
     private ExtendedWebElement itemContainer;
 
-    @FindBy(xpath = "//XCUIElementTypeStaticText[@name='%s']")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`name=='%s'`]")
     private ExtendedWebElement itemTitleFormatted;
 
     @iOSXCUITFindBy(accessibility = "test-CHECKOUT")

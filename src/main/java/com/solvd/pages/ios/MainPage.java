@@ -5,9 +5,9 @@ import com.solvd.pages.common.SortModalPageBase;
 import com.solvd.utils.SortOption;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 import java.math.BigDecimal;
 import java.util.Collections;
@@ -19,40 +19,40 @@ public class MainPage extends MainPageBase {
     @iOSXCUITFindBy(accessibility = "test-Toggle")
     private ExtendedWebElement toggleLayoutBtn;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name='test-Modal Selector Button']")
+    @ExtendedFindBy(iosPredicate = "name = 'test-Modal Selector Button'")
     private ExtendedWebElement sortBtn;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name='Selector container']")
+    @ExtendedFindBy(iosPredicate = "name ='Selector container'")
     private ExtendedWebElement sortModal;
 
     @iOSXCUITFindBy(accessibility = "test-PRODUCTS")
     private ExtendedWebElement itemsContainer;
 
-    @FindBy(xpath = "//XCUIElementTypeStaticText[@name='test-Item title']")
+    @ExtendedFindBy(iosPredicate = "name = 'test-Item title'")
     private List<ExtendedWebElement> itemTitles;
 
-    @FindBy(xpath = "//XCUIElementTypeStaticText[@name='test-Price']")
+    @ExtendedFindBy(iosPredicate = "name = 'test-Price'")
     private List<ExtendedWebElement> itemPrices;
 
-    @FindBy(xpath = "//XCUIElementTypeStaticText[@name='test-Item title' and @text='%s']/preceding-sibling::XCUIElementTypeOther[@name]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name=='test-Item'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeImage")
     private ExtendedWebElement itemImageFormatted;
 
-    @FindBy(xpath = "//XCUIElementTypeStaticText[@name='test-Item title' and @label='%s']")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`name=='test-Item title' and label=='%s'`]")
     private ExtendedWebElement itemTitleFormatted;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name='test-Item' and .//XCUIElementTypeStaticText[@name='test-Item title' and @label='%s']]//XCUIElementTypeOther[@name='test-ADD TO CART']")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name=='test-Item'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeOther[`name=='test-ADD TO CART'`]")
     private ExtendedWebElement addItemToCartBtnFormatted;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name='test-Item' and .//XCUIElementTypeStaticText[@name='test-Item title' and @label='%s']]//XCUIElementTypeOther[@name='test-REMOVE']")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name=='test-Item'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeOther[`name=='test-REMOVE'`]")
     private ExtendedWebElement removeItemFromCartBtnFormatted;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name='test-Item' and .//XCUIElementTypeStaticText[@name='test-Item title' and @label='%s']]//XCUIElementTypeOther[@name='test-Drag Handle']")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name=='test-Item'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeOther[`name=='test-Drag Handle'`]")
     private ExtendedWebElement itemDragHandleFormatted;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name='test-Item' and .//XCUIElementTypeStaticText[@name='test-Item title' and @label='%s']]//XCUIElementTypeOther[@name='test-REMOVE' or @name='test-ADD TO CART']")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name=='test-Item'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeOther[`name=='test-REMOVE' OR name=='test-ADD TO CART'`]")
     private ExtendedWebElement addRemoveBtnContainerFormatted;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name='test-Cart drop zone']")
+    @ExtendedFindBy(iosPredicate = "name ='test-Cart drop zone'")
     private ExtendedWebElement dropArea;
 
     public MainPage(WebDriver driver) {

@@ -4,16 +4,16 @@ import com.solvd.pages.common.SortModalPageBase;
 import com.solvd.utils.SortOption;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = SortModalPageBase.class)
 public class SortModalPage extends SortModalPageBase {
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name = '%s']")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == '%s'`]")
     private ExtendedWebElement sortOption;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name='Cancel']")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name=='Cancel'`]")
     private ExtendedWebElement cancelBtn;
 
     public SortModalPage(WebDriver driver) {

@@ -3,15 +3,15 @@ package com.solvd.pages.ios;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 public class PopupPage extends AbstractPage {
 
-    @FindBy(xpath = "//XCUIElementTypeAlert[@name='Open in “SwagLabsMobileApp”?']")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeAlert[`name=='Open in “SwagLabsMobileApp”?'`]")
     private ExtendedWebElement popupContainer;
 
-    @FindBy(xpath = "//XCUIElementTypeButton[@name='Open']")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name=='Open'`]")
     private ExtendedWebElement openBtn;
 
     public PopupPage(WebDriver driver) {
