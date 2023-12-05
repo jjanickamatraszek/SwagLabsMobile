@@ -21,9 +21,8 @@ public class DeepLinkTest extends SauceDemoBaseTest {
 
     @Test(dataProvider = "single items for deep link", dataProviderClass = DataProviders.class)
     @TestCaseKey({"JOANNA-41"})
-    public void openItemPageByDeepLinkTest(String title, String itemIndexNumber) {
+    public void openItemPageByDeepLinkTest(String expectedItemTitle, String itemIndexNumber) {
         String platform = R.CONFIG.get("capabilities.platformName");
-        String expectedItemTitle = L10N.getText(title);
         String deepLink = DeepLink.CART.getUrl() + itemIndexNumber;
 
         terminateApp(appPackageName);

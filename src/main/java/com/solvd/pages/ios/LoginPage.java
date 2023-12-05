@@ -10,16 +10,16 @@ import org.openqa.selenium.WebDriver;
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase {
 
-    @iOSXCUITFindBy(accessibility = "test-Username")
+    @ExtendedFindBy(iosPredicate = "name = '{L10N:loginPage.username.name}'")
     private ExtendedWebElement usernameInputField;
 
-    @iOSXCUITFindBy(accessibility = "test-Password")
+    @ExtendedFindBy(iosPredicate = "name = '{L10N:loginPage.password.name}'")
     private ExtendedWebElement passwordInputField;
 
     @iOSXCUITFindBy(accessibility = "test-LOGIN")
     private ExtendedWebElement loginBtn;
 
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name='test-Error message'`]/XCUIElementTypeStaticText")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name CONTAINS[cd] 'test-Error'`]/XCUIElementTypeStaticText")
     private ExtendedWebElement errorMessageText;
 
     public LoginPage(WebDriver driver) {

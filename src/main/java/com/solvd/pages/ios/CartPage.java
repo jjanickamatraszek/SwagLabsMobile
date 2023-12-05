@@ -11,16 +11,16 @@ import org.openqa.selenium.WebDriver;
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CartPageBase.class)
 public class CartPage extends CartPageBase {
 
-    @ExtendedFindBy(iosPredicate = "name = 'YOUR CART'")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`name == '{L10N:cartPage.pageTitle.name}'`]")
     private ExtendedWebElement pageTitle;
 
-    @iOSXCUITFindBy(accessibility = "test-Cart Content")
+    @ExtendedFindBy(iosPredicate = "name = '{L10N:cartPage.cartContent.name}'")
     private ExtendedWebElement itemsContainer;
 
     @ExtendedFindBy(iosPredicate = "name = 'test-Item'")
     private ExtendedWebElement itemContainer;
 
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`name=='%s'`]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`name == '%s'`]")
     private ExtendedWebElement itemTitleFormatted;
 
     @iOSXCUITFindBy(accessibility = "test-CHECKOUT")

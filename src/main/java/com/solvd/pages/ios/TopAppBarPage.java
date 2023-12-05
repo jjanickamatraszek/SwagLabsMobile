@@ -15,10 +15,10 @@ public class TopAppBarPage extends TopAppBarPageBase {
     @iOSXCUITFindBy(accessibility = "test-Menu")
     private ExtendedWebElement menuIcon;
 
-    @iOSXCUITFindBy(accessibility = "test-Cart")
+    @ExtendedFindBy(iosPredicate = "name = '{L10N:appBarPage.cartBtn.name}'")
     private ExtendedWebElement cartIcon;
 
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name=='test-Cart'`]/XCUIElementTypeOther")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == '{L10N:appBarPage.cartBtn.name}'`]/XCUIElementTypeOther")
     private ExtendedWebElement amountOfItemInCart;
 
     public TopAppBarPage(WebDriver driver) {

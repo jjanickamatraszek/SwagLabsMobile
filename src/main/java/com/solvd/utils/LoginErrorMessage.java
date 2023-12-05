@@ -1,9 +1,11 @@
 package com.solvd.utils;
 
+import com.zebrunner.carina.utils.resources.L10N;
+
 public enum LoginErrorMessage {
-    USERNAME_REQUIRED("Username is required"),
-    PASSWORD_REQUIRED("Password is required"),
-    CREDS_DONT_MATCH("Username and password do not match any user in this service.");
+    USERNAME_REQUIRED(L10N.getText("loginErrorMessage.usernameRequired")),
+    PASSWORD_REQUIRED(L10N.getText("loginErrorMessage.passwordRequired")),
+    CREDS_DONT_MATCH(L10N.getText("loginErrorMessage.credDontMatch"));
 
     private String desc;
 

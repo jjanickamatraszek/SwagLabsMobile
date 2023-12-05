@@ -8,10 +8,10 @@ import org.openqa.selenium.WebDriver;
 
 public class PopupPage extends AbstractPage {
 
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeAlert[`name=='Open in “SwagLabsMobileApp”?'`]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeAlert[`name == '{L10N:deepLink.popup.container.name}'`]")
     private ExtendedWebElement popupContainer;
 
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name=='Open'`]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == '{L10N:deepLink.popup.openBtn.name}'`]")
     private ExtendedWebElement openBtn;
 
     public PopupPage(WebDriver driver) {
