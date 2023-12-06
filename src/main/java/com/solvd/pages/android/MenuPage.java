@@ -4,13 +4,13 @@ import com.solvd.pages.common.DrawingPageBase;
 import com.solvd.pages.common.MenuPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = MenuPageBase.class)
 public class MenuPage extends MenuPageBase {
 
-    @AndroidFindBy(accessibility = "test-DRAWING")
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='{L10N:menuPage.drawing.content-desc}']")
     private ExtendedWebElement drawingLink;
 
     public MenuPage(WebDriver driver) {

@@ -14,7 +14,7 @@ public class CartPage extends CartPageBase {
     @FindBy(xpath = "//android.view.ViewGroup[.//android.view.ViewGroup[@content-desc='test-Menu']]/following-sibling::android.view.ViewGroup[count(android.widget.TextView)=1]")
     private ExtendedWebElement pageTitle;
 
-    @FindBy(xpath = "//android.widget.ScrollView[@content-desc='test-Cart Content']")
+    @FindBy(xpath = "//android.widget.ScrollView[@content-desc='{L10N:cartPage.cartContent.name}']")
     private ExtendedWebElement itemsContainer;
 
     @AndroidFindBy(accessibility = "test-Item")

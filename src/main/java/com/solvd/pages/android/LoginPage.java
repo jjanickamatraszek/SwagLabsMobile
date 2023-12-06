@@ -4,6 +4,7 @@ import com.solvd.pages.common.LoginPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -11,20 +12,22 @@ import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase implements IMobileUtils {
 
-    @AndroidFindBy(accessibility = "test-Username")
+    @FindBy(xpath = "//android.widget.EditText[@content-desc='{L10N:loginPage.username.name}']")
     private ExtendedWebElement usernameInputField;
 
-    @AndroidFindBy(accessibility = "test-Password")
+    @FindBy(xpath = "//android.widget.EditText[@content-desc='{L10N:loginPage.password.name}']")
     private ExtendedWebElement passwordInputField;
 
     @AndroidFindBy(accessibility = "test-LOGIN")
     private ExtendedWebElement loginBtn;
 
-    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Error message']/android.widget.TextView")
+    @FindBy(xpath = "//android.view.ViewGroup[contains(@content-desc,'test-Error')]/android.widget.TextView")
     private ExtendedWebElement errorMessageText;
 
     public LoginPage(WebDriver driver) {
         super(driver);
+        setUiLoadedMarker(passwordInputField);
+        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
     }
 
     @Override

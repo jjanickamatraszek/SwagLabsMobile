@@ -15,7 +15,7 @@ public class DrawingPage extends DrawingPageBase {
     @FindBy(xpath = "//android.view.View[@resource-id='signature-pad']//android.widget.Image")
     private ExtendedWebElement signaturePad;
 
-    @FindBy(xpath = "//android.view.ViewGroup[./android.widget.TextView[@text='DRAWING']]")
+    @FindBy(xpath = "//android.view.ViewGroup[./android.widget.TextView[@text='{L10N:drawingPage.title.text}']]")
     private ExtendedWebElement pageTitle;
 
     @ExtendedFindBy(image = "images/android/android_line.png")
