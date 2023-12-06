@@ -8,6 +8,7 @@ import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase implements IMobileUtils {
@@ -32,6 +33,7 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
 
     @Override
     public void typeName(String name) {
+        waitUntil(ExpectedConditions.visibilityOf(usernameInputField.getElement()), 3);
         usernameInputField.type(name);
     }
 
