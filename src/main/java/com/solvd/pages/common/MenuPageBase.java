@@ -8,4 +8,12 @@ public abstract class MenuPageBase extends BaseSauceDemoPageBase {
     }
 
     public abstract DrawingPageBase navigateToDrawingPage();
+
+    public abstract void hoverAllItemsLink();
+
+    public abstract void hoverWebViewLink();
+
+    public abstract void hoverGeolocationLink();
+
+    public abstract void hoverDrawingLink();
 }

@@ -16,7 +16,7 @@ import java.util.List;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = MainPageBase.class)
 public class MainPage extends MainPageBase {
 
-    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Toggle']")
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='{L10N:mainPage.layoutToggle.content-desc}']")
     private ExtendedWebElement toggleLayoutBtn;
 
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Modal Selector Button']")
@@ -25,34 +25,34 @@ public class MainPage extends MainPageBase {
     @AndroidFindBy(accessibility = "Selector container")
     private ExtendedWebElement sortModal;
 
-    @AndroidFindBy(accessibility = "test-PRODUCTS")
+    @FindBy(xpath = "//android.widget.ScrollView[@content-desc='{L10N:mainPage.itemsContainer.content-desc}']")
     private ExtendedWebElement itemsContainer;
 
-    @FindBy(xpath = "//android.widget.TextView[@content-desc='test-Item title']")
+    @FindBy(xpath = "//android.widget.TextView[@content-desc='{L10N:mainPage.itemTitle.content-desc}']")
     private List<ExtendedWebElement> itemTitles;
 
-    @FindBy(xpath = "//android.widget.TextView[@content-desc='test-Price']")
+    @FindBy(xpath = "//android.widget.TextView[@content-desc='{L10N:mainPage.itemPrice.content-desc}']")
     private List<ExtendedWebElement> itemPrices;
 
-    @FindBy(xpath = "//android.widget.TextView[@content-desc='test-Item title' and @text='%s']/preceding-sibling::android.widget.ImageView")
+    @FindBy(xpath = "//android.widget.TextView[@content-desc='{L10N:mainPage.itemTitle.content-desc}' and @text='%s']/preceding-sibling::android.widget.ImageView")
     private ExtendedWebElement itemImageFormatted;
 
-    @FindBy(xpath = "//android.widget.TextView[@content-desc='test-Item title' and @text='%s']")
+    @FindBy(xpath = "//android.widget.TextView[@content-desc='{L10N:mainPage.itemTitle.content-desc}' and @text='%s']")
     private ExtendedWebElement itemTitleFormatted;
 
-    @FindBy(xpath = "//android.widget.TextView[@content-desc='test-Item title' and @text='%s']/following-sibling::android.view.ViewGroup[@content-desc='test-ADD TO CART']")
+    @FindBy(xpath = "//android.widget.TextView[@content-desc='{L10N:mainPage.itemTitle.content-desc}' and @text='%s']/following-sibling::android.view.ViewGroup[@content-desc='{L10N:mainPage.itemAddToCartBtn.content-desc}']")
     private ExtendedWebElement addItemToCartBtnFormatted;
 
-    @FindBy(xpath = "//android.widget.TextView[@content-desc='test-Item title' and @text='%s']/following-sibling::android.view.ViewGroup[@content-desc='test-REMOVE']")
+    @FindBy(xpath = "//android.widget.TextView[@content-desc='{L10N:mainPage.itemTitle.content-desc}' and @text='%s']/following-sibling::android.view.ViewGroup[@content-desc='{L10N:mainPage.itemRemoveFromCartBtn.content-desc}']")
     private ExtendedWebElement removeItemFromCartBtnFormatted;
 
-    @FindBy(xpath = "//android.widget.TextView[@content-desc='test-Item title' and @text='%s']/following-sibling::android.view.ViewGroup[@content-desc='test-Drag Handle']")
+    @FindBy(xpath = "//android.widget.TextView[@content-desc='{L10N:mainPage.itemTitle.content-desc}' and @text='%s']/following-sibling::android.view.ViewGroup[@content-desc='test-Drag Handle']")
     private ExtendedWebElement itemDragHandleFormatted;
 
-    @FindBy(xpath = "//android.widget.TextView[@content-desc='test-Item title' and @text='%s']/following-sibling::android.view.ViewGroup[@content-desc='test-REMOVE' or @content-desc='test-ADD TO CART']")
+    @FindBy(xpath = "//android.widget.TextView[@content-desc='{L10N:mainPage.itemTitle.content-desc}' and @text='%s']/following-sibling::android.view.ViewGroup[@content-desc='{L10N:mainPage.itemRemoveFromCartBtn.content-desc}' or @content-desc='{L10N:mainPage.itemAddToCartBtn.content-desc}']")
     private ExtendedWebElement addRemoveBtnContainerFormatted;
 
-    @FindBy(xpath = "//android.view.ViewGroup[contains(@content-desc,'drop')]")
+    @FindBy(xpath = "//android.view.ViewGroup[contains(@content-desc,'{L10N:mainPage.dropArea.content-desc}')]")
     private ExtendedWebElement dropArea;
 
     public MainPage(WebDriver driver) {

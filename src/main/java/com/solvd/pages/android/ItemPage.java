@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ItemPageBase.class)
 public class ItemPage extends ItemPageBase {
 
-    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Description']/android.widget.TextView[1]")
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='{L10N:itemPage.description.content-desc}']/android.widget.TextView[1]")
     ExtendedWebElement itemTitle;
 
     public ItemPage(WebDriver driver) {

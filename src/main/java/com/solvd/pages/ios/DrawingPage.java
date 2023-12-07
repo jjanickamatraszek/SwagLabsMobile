@@ -14,7 +14,7 @@ public class DrawingPage extends DrawingPageBase {
     @ExtendedFindBy(iosPredicate = "name = 'Signature Pad demo'")
     private ExtendedWebElement signaturePad;
 
-    @ExtendedFindBy(iosPredicate = "name ='DRAWING'")
+    @ExtendedFindBy(iosPredicate = "name = '{L10N:drawingPage.pageTitle.name}' AND type = 'XCUIElementTypeOther'")
     private ExtendedWebElement pageTitle;
 
     @ExtendedFindBy(image = "images/ios/ios_line.png")

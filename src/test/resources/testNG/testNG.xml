@@ -72,4 +72,13 @@
             </class>
         </classes>
     </test>
+    <test name="Wording">
+        <classes>
+            <class name="com.solvd.menu.LocalizedWordingTest">
+                <methods>
+                    <include name="verifyMenuLinksTranslationsTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>

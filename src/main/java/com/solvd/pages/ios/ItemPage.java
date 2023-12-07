@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = ItemPageBase.class)
 public class ItemPage extends ItemPageBase {
 
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name='test-Description'`]/XCUIElementTypeStaticText[1]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == '{L10N:itemPage.description.name}'`]/XCUIElementTypeStaticText[1]")
     ExtendedWebElement title;
 
     public ItemPage(WebDriver driver) {

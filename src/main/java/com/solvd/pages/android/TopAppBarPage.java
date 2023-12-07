@@ -15,10 +15,10 @@ public class TopAppBarPage extends TopAppBarPageBase {
     @ExtendedFindBy(image = "images/menu.png")
     private ExtendedWebElement menuIcon;
 
-    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Cart']")
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='{L10N:appBarPage.cartBtn.content-desc}']")
     private ExtendedWebElement cartIcon;
 
-    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Cart']//android.widget.TextView")
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='{L10N:appBarPage.cartBtn.content-desc}']//android.widget.TextView")
     private ExtendedWebElement amountOfItemInCart;
 
     public TopAppBarPage(WebDriver driver) {

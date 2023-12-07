@@ -6,7 +6,6 @@ import com.solvd.utils.SortOption;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebDriver;
 
 import java.math.BigDecimal;
@@ -16,7 +15,7 @@ import java.util.List;
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = MainPageBase.class)
 public class MainPage extends MainPageBase {
 
-    @iOSXCUITFindBy(accessibility = "test-Toggle")
+    @ExtendedFindBy(iosPredicate = "name = '{L10N:mainPage.layoutToggle.name}'")
     private ExtendedWebElement toggleLayoutBtn;
 
     @ExtendedFindBy(iosPredicate = "name = 'test-Modal Selector Button'")
@@ -25,34 +24,34 @@ public class MainPage extends MainPageBase {
     @ExtendedFindBy(iosPredicate = "name ='Selector container'")
     private ExtendedWebElement sortModal;
 
-    @iOSXCUITFindBy(accessibility = "test-PRODUCTS")
+    @ExtendedFindBy(iosPredicate = "name = '{L10N:mainPage.itemsContainer.name}'")
     private ExtendedWebElement itemsContainer;
 
-    @ExtendedFindBy(iosPredicate = "name = 'test-Item title'")
+    @ExtendedFindBy(iosPredicate = "name = '{L10N:mainPage.itemTitle.name}'")
     private List<ExtendedWebElement> itemTitles;
 
-    @ExtendedFindBy(iosPredicate = "name = 'test-Price'")
+    @ExtendedFindBy(iosPredicate = "name = '{L10N:mainPage.itemPrice.name}'")
     private List<ExtendedWebElement> itemPrices;
 
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name=='test-Item'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeImage")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == '{L10N:mainPage.testItem.name}'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeImage")
     private ExtendedWebElement itemImageFormatted;
 
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`name=='test-Item title' and label=='%s'`]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`name == '{L10N:mainPage.itemTitle.name}' and label=='%s'`]")
     private ExtendedWebElement itemTitleFormatted;
 
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name=='test-Item'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeOther[`name=='test-ADD TO CART'`]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == '{L10N:mainPage.testItem.name}'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeOther[`name == '{L10N:mainPage.itemAddToCartBtn.name}'`]")
     private ExtendedWebElement addItemToCartBtnFormatted;
 
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name=='test-Item'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeOther[`name=='test-REMOVE'`]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == '{L10N:mainPage.testItem.name}'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeOther[`name == '{L10N:mainPage.itemRemoveFromCartBtn.name}'`]")
     private ExtendedWebElement removeItemFromCartBtnFormatted;
 
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name=='test-Item'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeOther[`name=='test-Drag Handle'`]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == '{L10N:mainPage.testItem.name}'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeOther[`name == 'test-Drag Handle'`]")
     private ExtendedWebElement itemDragHandleFormatted;
 
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name=='test-Item'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeOther[`name=='test-REMOVE' OR name=='test-ADD TO CART'`]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == '{L10N:mainPage.testItem.name}'`]/XCUIElementTypeOther[`name contains '%s'`]/**/XCUIElementTypeOther[`name == '{L10N:mainPage.itemRemoveFromCartBtn.name}' OR name == '{L10N:mainPage.itemAddToCartBtn.name}'`]")
     private ExtendedWebElement addRemoveBtnContainerFormatted;
 
-    @ExtendedFindBy(iosPredicate = "name ='test-Cart drop zone'")
+    @ExtendedFindBy(iosPredicate = "name ='{L10N:mainPage.dropArea.name}'")
     private ExtendedWebElement dropArea;
 
     public MainPage(WebDriver driver) {
