@@ -2,6 +2,7 @@ package com.solvd.pages.ios;
 
 import com.solvd.pages.common.DrawingPageBase;
 import com.solvd.pages.common.MenuPageBase;
+import com.solvd.pages.common.WebViewPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
@@ -38,6 +39,12 @@ public class MenuPage extends MenuPageBase {
     public DrawingPageBase navigateToDrawingPage() {
         drawingLink.click();
         return initPage(DrawingPageBase.class);
+    }
+
+    @Override
+    public WebViewPageBase navigateToWebViewPage() {
+        webViewLink.click();
+        return initPage(WebViewPageBase.class);
     }
 
     @Override

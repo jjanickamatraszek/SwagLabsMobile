@@ -81,4 +81,13 @@
             </class>
         </classes>
     </test>
+    <test name="WebView">
+        <classes>
+            <class name="com.solvd.webView.WebViewTest">
+                <methods>
+                    <include name="switchContextToWebViewTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>
