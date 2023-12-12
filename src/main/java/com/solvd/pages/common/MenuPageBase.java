@@ -9,6 +9,8 @@ public abstract class MenuPageBase extends BaseSauceDemoPageBase {
 
     public abstract DrawingPageBase navigateToDrawingPage();
 
+    public abstract WebViewPageBase navigateToWebViewPage();
+
     public abstract void hoverAllItemsLink();
 
     public abstract void hoverWebViewLink();
